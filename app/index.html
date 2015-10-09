@@ -27,26 +27,32 @@
 
     <div id="ft-container" class="ft-container-main">
 
-      <h1 class="ft-header ft-emoji-fart">Fartlets!</h1>
+      <div class="ft-header">
 
-      <a href="#audio-player" class="ft-skip-to-player">Skip to player</a>
+        <h1 class="ft-emoji-fart">Fartlets!</h1>
 
-      <div class="ft-content">
+        <a href="#ft-button-play" class="ft-skip-to-player">Skip to player</a>
 
-        <div class="ft-information">
+      </div>
+
+      <div id="ft-content-container" class="ft-content">
+
+        <div id="ft-information-container" class="ft-information ft-screen-reader-text">
           <p>This app allows you to listen to <span class="ft-has-js">and watch </span>a Fartlek countdown to time your runs.<span class="ft-has-js"> You can adjust the length of each fartlek and the number of repetitions.</span></p>
-          <p>You can read more about <a href="https://en.wikipedia.org/wiki/Fartlek">Fartleks on Wikipedia.</a></p>
-          <p>Developer note: I call Fartleks Fartlets because I'm incurably immature.</p>
+          <!-- <p>You can read more about <a href="https://en.wikipedia.org/wiki/Fartlek">Fartleks on Wikipedia.</a></p> -->
+          <p>Developer note: I call Fartleks Fartlets because I'm incurably immature.<br>patrickgrey.co.uk</p>
+
         </div>
 
         <div id="audio-player" class="ft-audio-player-custom">
-          <label for="ft-audio-control-repeat-count">Number of Fartlets.</label><input id="ft-audio-control-repeat-count" type="number">
-          <button>Play</button>
+          <p class="ft-countdown">30</p>
+          <p class="ft-total">5</p>
+          <button id="ft-button-play">Play</button>
           <button>Pause</button>
           <button>Reset</button>
           <button>Increase Fartlet count</button>
           <button>Reduce Fartlet count</button>
-          <label for="ft-audio-control-repeat-slider">Set number of Fartlets.</label><input id="ft-audio-control-repeat-slider" type="range" min="0" max="20" step="any">
+          <!-- <label for="ft-audio-control-repeat-slider">Set number of Fartlets.</label><input id="ft-audio-control-repeat-slider" type="range" min="0" max="20" step="any"> -->
         </div>
 
       </div>

@@ -1,4 +1,4 @@
-
+/* Information button and tooltip style dialogue with content. */
 
 .ft-button-information {
   position: absolute;
@@ -9,10 +9,35 @@
   right: 0.35em;
   border-radius: 50%;
   color: #fff;
-  background-color: #2196F3;
+  background-color: #085390;
   border: none;
+  z-index: 1;
+  outline: none;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
 }
 
 .ft-button-information:active {
   background-color: #1565C0;
+}
+
+.ft-button-information:focus {
+  background-color: #1565C0;
+}
+
+.js .ft-button-information-close {
+  background: #FF5722;
+  transform: rotate(180deg);
+}
+
+.js .ft-information {
+  color: #fff;
+  position: absolute;
+  width: 85%;
+  background: #085390;
+  padding: 1em  1em 0.5em 1em;
+  top: 0.45em;
+  right: 0.5em;
+  border-radius: 1.2em;
+  border-top-left-radius: 0;
 }

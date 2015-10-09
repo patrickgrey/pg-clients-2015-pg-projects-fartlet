@@ -3,11 +3,16 @@ body {
   font-size: 18px;
   color: #333;
   background: #CDDC39;
+  background: #8BC34A;
 }
 
 h1 {
   text-align: center;
   font-style: italic;
+}
+
+.ft-header {
+  background: #BBDEFB;
 }
 
 // https://github.com/philipwalton/solved-by-flexbox/blob/master/assets/css/components/site.css

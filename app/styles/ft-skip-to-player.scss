@@ -1,0 +1,17 @@
+.ft-skip-to-player {
+  padding: 2em 1em 1em;
+  position: absolute;
+  top: -5em;
+  left: 0;
+  color: #fff;
+  background: #2196F3;
+  transition: top .5s ease-in;
+  z-index: 100;
+}
+
+.ft-skip-to-player:focus {
+    position: absolute;
+    top: 0;
+    outline: 0;
+    transition: top .3s ease-in;
+}

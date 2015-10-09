@@ -1,5 +1,13 @@
 // bower:scss
 // endbower
 
+// Minimum viable product - default audio player with flexbox positioning.
 @import 'ft-progressive-base';
 
+.ft-audio-player-custom {
+  display: none;
+}
+
+.js .ft-audio-player-custom {
+  display: block;
+}

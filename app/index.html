@@ -1,10 +1,10 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="en-GB">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>💨 Fartlets!</title>
+    <title>Fartlets!</title>
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
@@ -26,16 +26,38 @@
   <body>
 
     <div class="ft-container-main">
+
       <h1 class="ft-header ft-emoji-fart">Fartlets!</h1>
+
       <div class="ft-content">
 
+        <div class="ft-information">
+          <a href="#audio-player">Skip to player</a>
+          <p>This app allows you to listen to <span class="ft-has-js">and watch </span>a Fartlek countdown to time your runs.<span class="ft-has-js"> You can adjust the length of each fartlek and the number of repetitions.</span></p>
+          <p>You can read more about <a href="https://en.wikipedia.org/wiki/Fartlek">Fartleks on Wikipedia.</a></p>
+          <p>Developer note: I call Fartleks Fartlets because I'm incurably immature.</p>
+        </div>
+
+        <div id="audio-player" class="ft-audio-player-custom">
+          <label for="ft-audio-control-repeat-count">Number of Fartlets.</label><input id="ft-audio-control-repeat-count" type="number">
+          <button>Play</button>
+          <button>Pause</button>
+          <button>Reset</button>
+          <button>Increase Fartlet count</button>
+          <button>Reduce Fartlet count</button>
+          <label for="ft-audio-control-repeat-slider">Set number of Fartlets.</label><input id="ft-audio-control-repeat-slider" type="range" min="0" max="20" step="any">
+        </div>
+
       </div>
-      <div class="ft-footer">
+
+      <div class="ft-audio-player">
         <audio  id="ft-audio-1" class="ft-audio" controls preload loop>
           <source src="audio/countdown-test-1.ogg">
           <source src="audio/countdown-test-1.mp3">
+          <p>Your browser does not support audio in this app but you can download the <a href="audio/countdown-default-1.mp3">mp3</a> or the <a href="audio/countdown-default-1.ogg">ogg</a> file<span class="ft-has-js"> and you can still use the visual countdown</span>.</p>
         </audio>
       </div>
+
     </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->

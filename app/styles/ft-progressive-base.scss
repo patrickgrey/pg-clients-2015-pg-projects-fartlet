@@ -21,29 +21,27 @@ h1 {
  */
 .ft-container-main {
   display: flex;
-  margin: 0 auto;
   flex-direction: column;
   min-height: 90vh;
   height: 100%; /* 1, 3 */
-
-}
-
-.ft-header,
-.ft-footer {
-  flex: none; /* 2 */
-}
-
-.ft-footer {
-  flex: none;
-  background: #E6EE9C;
-  transform: scaleY(2);
 }
 
 .ft-content {
+  margin: 0 auto;
   flex: 1;
   width: 90%;
 }
 
+.ft-header,
+.ft-audio-player {
+  flex: none; /* 2 */
+}
+
+.ft-audio-player {
+  flex: none;
+  background: #E6EE9C;
+  transform: scaleY(2);
+}
 
 .ft-emoji-fart:before {
   content: "\01F4A8";
@@ -59,8 +57,28 @@ h1 {
   margin: 0 auto;
 }
 
+.ft-audio-player {
+  display: block;
+}
+
+.js .ft-audio-player {
+  display: none;
+}
+
 [controls] {
   width:90%;
   background: #E6EE9C;
   margin:.75em auto;
+}
+
+.ft-has-js, .ft-audio-player-custom {
+  display: none;
+}
+
+.js .ft-has-js {
+  display: inline;
+}
+
+.js .ft-audio-player-custom {
+  display: block;
 }

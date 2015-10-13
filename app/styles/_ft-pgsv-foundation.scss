@@ -12,6 +12,7 @@ body {
 
 h1 {
   margin: 0;
+  padding: 0.5em 0;
   text-align: center;
   font-style: italic;
 }
@@ -47,4 +48,8 @@ h1 {
 // Hide some text (as features not available without javascript) and custom player controls if no JS present
 .ft-js-only-text {
   display: none;
+}
+
+.js .ft-js-only-text {
+  display: inline;
 }

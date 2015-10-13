@@ -30,14 +30,22 @@
   transform: rotate(180deg);
 }
 
-.js .ft-information {
+.ft-information {
   color: #fff;
-  position: absolute;
-  width: 85%;
-  background: #085390;
+  margin: 1em 0;
+  background: $info-blue;
   padding: 1em  1em 0.5em 1em;
-  top: 0.45em;
-  right: 0.5em;
   border-radius: 1.2em;
   border-top-left-radius: 0;
+}
+
+// Need to hide the container and position it if JS is available.
+.js {
+  .ft-information {
+    // color: red;
+    width: 80%;
+    position: absolute;
+    top: -0.55em;
+    right: 0.5em;
+  }
 }

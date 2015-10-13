@@ -1,0 +1,34 @@
+// need flexbox without js and flexbox with js in order to deal with info content.
+// Do flex only styles first then override inside with js styles
+
+// .flexbox modernizr check not needed as makes flexbox dependent on JS, which is BADDD.
+//.flexbox {
+    
+    .ft-wrapper {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+    
+    // Only the content flexes to fit available space! Therefore, we have a sticky footer!
+    // Boooooommmm!
+    .no-js .ft-content {
+        flex: 1;
+    }
+    // In this case, the info panel should have been removed from the DOM flow
+    // so the audio wrapper needs to take up all the remaining space.
+    .js {
+        
+        .ft-audio-wrapper {
+            flex: 1;
+            display: flex;
+            // justify-content: flex-end;
+        }
+        
+        // Force custom controls to stick to bottom of available space.
+        .ft-audio {
+            align-self: flex-end;
+        }
+        
+    }
+//}

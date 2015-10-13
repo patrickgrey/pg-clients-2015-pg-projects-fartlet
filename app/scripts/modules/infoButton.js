@@ -9,7 +9,7 @@ module.exports = function (infoContainer, infoParent, infoPanel) {
     button.className = 'ft-button-information';
 
     var toggleInfo = function (event) {
-        infoDiv.className.indexOf('ft-screen-reader-text') === -1 ? hideInfo() : showInfo();
+        infoDiv.className.indexOf('ft-screen-reader-text-js-only') === -1 ? hideInfo() : showInfo();
     };
 
     var showInfo = function (event) {
@@ -20,10 +20,12 @@ module.exports = function (infoContainer, infoParent, infoPanel) {
     };
 
     var hideInfo = function (event) {
-        infoDiv.className = 'ft-information ft-screen-reader-text';
+        infoDiv.className = 'ft-information ft-screen-reader-text-js-only';
         button.innerHTML = "?";
         button.className = "ft-button-information";
     };
+    
+    // hideInfo();
 
     button.onclick = toggleInfo;
 

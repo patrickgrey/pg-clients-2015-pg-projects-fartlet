@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #333;
+  background: $lime-green;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  font-style: italic;
+}
+
+// Add a stupid fart emoji to title for shit and giggles.
+.ft-emoji-fart:before {
+  content: "\01F4A8";
+  speak: none;
+  display: inline-block;
+  transform: scaleX(-1) skewX(30deg);
+  padding-left: 5px;
+  margin-left: -15px;
+}
+
+.ft-header {
+  background: $sky-blue;
+}
+
+// Centre native audio player
+.ft-content {
+  width: 90%;
+  margin: 0 auto;
+}
+
+// Position native player
+[controls] {
+  width:100%;
+  transform: scaleY(2);
+  background: $lime-green;
+  margin:1em auto;
+}
+
+// Hide some text (as features not available without javascript) and custom player controls if no JS present
+.ft-js-only-text {
+  display: none;
+}

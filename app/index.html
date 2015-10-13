@@ -25,48 +25,51 @@
   </head>
   <body>
 
-    <div id="ft-container" class="ft-container-main">
+    <div id="ft-wrapper-id" class="ft-wrapper">
 
       <div class="ft-header">
+      
+        <a href="#ft-button-play-id" class="ft-skip-to-player">Skip to player</a>
 
         <h1 class="ft-emoji-fart">Fartlets!</h1>
 
-        <a href="#ft-button-play" class="ft-skip-to-player">Skip to player</a>
-
       </div>
 
-      <div id="ft-content-container" class="ft-content">
+      <div id="ft-content-id" class="ft-content">
 
-        <div id="ft-information-container" class="ft-information ft-screen-reader-text">
-          <p>This app allows you to listen to <span class="ft-has-js">and watch </span>a Fartlek countdown to time your runs.<span class="ft-has-js"> You can adjust the length of each fartlek and the number of repetitions.</span></p>
+        <div id="ft-information-id" class="ft-information">
+          <p>This app allows you to listen to <span class="ft-js-only-text">and watch </span>a Fartlek countdown to time your runs.<span class="ft-js-only-text"> You can adjust the length of each fartlek and the number of repetitions.</span></p>
           <!-- <p>You can read more about <a href="https://en.wikipedia.org/wiki/Fartlek">Fartleks on Wikipedia.</a></p> -->
           <p>Developer note: I call Fartleks Fartlets because I'm incurably immature.<br>patrickgrey.co.uk</p>
 
         </div>
 
-        <div id="audio-player" class="ft-audio-player-custom">
-          <p class="ft-countdown">30</p>
-          <p class="ft-total">5</p>
-          <button id="ft-button-play">Play</button>
-          <button>Pause</button>
-          <button>Reset</button>
-          <button>Increase Fartlet count</button>
-          <button>Reduce Fartlet count</button>
-          <!-- <label for="ft-audio-control-repeat-slider">Set number of Fartlets.</label><input id="ft-audio-control-repeat-slider" type="range" min="0" max="20" step="any"> -->
-        </div>
-
       </div>
 
-      <div class="ft-audio-player">
-        <audio  id="ft-audio-1" class="ft-audio" controls preload loop>
-          <source src="audio/countdown-test-1.ogg">
-          <source src="audio/countdown-test-1.mp3">
-          <p>Your browser does not support audio in this app but you can download the <a href="audio/countdown-default-1.mp3">mp3</a> or the <a href="audio/countdown-default-1.ogg">ogg</a> file<span class="ft-has-js"> and you can still use the visual countdown</span>.</p>
-        </audio>
+    
+      <div class="ft-audio-wrapper">
+          
+          <!-- <div id="audio-player" class="ft-audio-player-custom">
+            <p class="ft-countdown">30</p>
+            <p class="ft-total">5</p>
+            <button id="ft-button-play">Play</button>
+            <button>Pause</button>
+            <button>Reset</button>
+            <button>Increase Fartlet count</button>
+            <button>Reduce Fartlet count</button>
+          </div> -->
+          
+          <audio  id="ft-audio-id" class="ft-audio" controls preload loop>
+            <source src="audio/countdown-test-1.ogg">
+            <source src="audio/countdown-test-1.mp3">
+            <p>Your browser does not support audio in this app but you can download the <a href="audio/countdown-default-1.mp3">mp3</a> or the <a href="audio/countdown-default-1.ogg">ogg</a> file<span class="ft-js-only-text"> and you can still use the visual countdown</span>.</p>
+          </audio>
+          
+          
       </div>
 
-    </div>
-
+    </div> <!-- ft-wrapper -->
+    
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=

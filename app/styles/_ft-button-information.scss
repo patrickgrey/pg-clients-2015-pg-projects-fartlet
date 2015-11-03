@@ -2,11 +2,12 @@
 
 .ft-button-information {
   position: absolute;
-  width: 1.5em;
-  height: 1.5em;
+  top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
+  right: 8px;
+  margin: 0 auto;
+  width: $ft-buttons-smallest-diameter;
+  height: $ft-buttons-smallest-diameter;
   font-size: 1.5em;
-  top: 0.3em;
-  right: 0.35em;
   border-radius: 50%;
   color: #fff;
   background-color: #085390;
@@ -35,7 +36,7 @@
   margin: 1em 0;
   background: $info-blue;
   padding: 1em  1em 0.5em 1em;
-  border-radius: 1.2em;
+  border-radius: ($ft-buttons-smallest-diameter/2);
   border-top-left-radius: 0;
 }
 
@@ -45,7 +46,15 @@
     // color: red;
     width: 80%;
     position: absolute;
-    top: -0.55em;
-    right: 0.5em;
+    top: 25px;
+    right: 8px;
   }
+}
+
+@media (min-width: 200px) {
+  
+  .ft-button-information {
+    
+  }
+  
 }

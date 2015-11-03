@@ -1,15 +1,19 @@
-.ft-screen-reader-text {
-    clip: rect(1px, 1px, 1px, 1px);
+@mixin ft-screen-reader-text {
     position: absolute !important;
     height: 1px;
     width: 1px;
+    margin: -1px;
+    padding: 0;
+    clip: rect(1px, 1px, 1px, 1px);
+    border: 0;
     overflow: hidden;
 }
 
+.ft-screen-reader-text {
+    @include ft-screen-reader-text();
+}
+
+// Only applied if js is enabled.
 .js .ft-screen-reader-text-js-only {
-    clip: rect(1px, 1px, 1px, 1px);
-    position: absolute !important;
-    height: 1px;
-    width: 1px;
-    overflow: hidden;
+    @include ft-screen-reader-text();
 }

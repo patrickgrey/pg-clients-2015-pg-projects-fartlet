@@ -12,19 +12,9 @@ body {
 
 h1 {
   margin: 0;
-  padding: 0.5em 0;
+  padding: 0;
   text-align: center;
   font-style: italic;
-}
-
-// Add a stupid fart emoji to title for shit and giggles.
-.ft-emoji-fart:before {
-  content: "\01F4A8";
-  speak: none;
-  display: inline-block;
-  transform: scaleX(-1) skewX(30deg);
-  padding-left: 5px;
-  margin-left: -15px;
 }
 
 .ft-header {
@@ -52,4 +42,29 @@ h1 {
 
 .js .ft-js-only-text {
   display: inline;
+}
+
+@media (min-width: 200px) {
+  
+  
+  
+  
+// h1 {
+//   margin: 0;
+//   padding: 0.5em 0;
+//   text-align: center;
+//   font-style: italic;
+// }
+
+  // Add a stupid fart emoji to title for shit and giggles.
+  .ft-emoji-fart::before {
+    content: "\01F4A8";
+    speak: none;
+    display: inline-block;
+    transform: scaleX(-1) skewX(30deg);
+    padding-left: 5px;
+    margin-left: -15px;
+    color: #085390;
+  }
+  
 }

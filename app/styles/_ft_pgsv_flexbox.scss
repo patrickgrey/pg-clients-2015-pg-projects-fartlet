@@ -7,7 +7,7 @@
     .ft-wrapper {
         display: flex;
         flex-direction: column;
-        min-height: 100vh;
+        height: 100vh;
     }
     
     // Only the content flexes to fit available space! Therefore, we have a sticky footer!

@@ -1,0 +1,32 @@
+.ft-header {
+    min-height: $ft-title-height;
+    margin-bottom: $ft-title-margin-bottom;
+}
+
+.svg .ft-title {
+    @include ft-screen-reader-text();
+}
+
+.pg-clients-2015-pg-projects-fartlet-title-container {
+    display: none;
+}
+
+.svg .pg-clients-2015-pg-projects-fartlet-title-container {
+    display: block;
+    max-height: 40px;
+}
+
+@media (min-width: 200px) {
+  
+  // Add a stupid fart emoji to title for shit and giggles.
+  .pg-clients-2015-pg-projects-fartlet-title-container::before {
+    content: "\01F4A8";
+    speak: none;
+    display: inline-block;
+    transform: scaleX(-1) skewX(30deg);
+    padding-left: 5px;
+    margin-left: -15px;
+    color: #085390;
+  }
+  
+}

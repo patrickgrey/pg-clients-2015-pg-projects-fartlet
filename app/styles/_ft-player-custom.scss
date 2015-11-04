@@ -21,7 +21,7 @@
 
 .ft-button-play {
     // position: absolute;
-    bottom: 90px;
+    bottom: 100px;
     width: $ft-buttons-play-diameter;
     height: $ft-buttons-play-diameter;
     background: $lime-green;
@@ -37,11 +37,11 @@
 }
 
 .ft-button-increase {
-    right: calc(50%);
+    left: calc(50% + 86px);
 }
 
 .ft-button-reduce {
-    left: calc(50%);
+    left: calc(50% - 86px - 44px);
 }
 
 // .ft-countdown {

@@ -6,7 +6,7 @@ module.exports = function (infoContainer, infoParent, infoPanel) {
     button = document.createElement('button');
 
     button.innerHTML = '?';
-    button.className = 'ft-button-information';
+    button.className = 'ft-button ft-button-information';
 
     var toggleInfo = function (event) {
         infoDiv.className.indexOf('ft-screen-reader-text-js-only') === -1 ? hideInfo() : showInfo();
@@ -15,14 +15,14 @@ module.exports = function (infoContainer, infoParent, infoPanel) {
     var showInfo = function (event) {
         infoDiv.className = 'ft-information';
         button.innerHTML = "x";
-        button.className = "ft-button-information ft-button-information-close";
+        button.className = "ft-button ft-button-information ft-button-information-close";
         // Change text to cross and colour to red.
     };
 
     var hideInfo = function (event) {
         infoDiv.className = 'ft-information ft-screen-reader-text-js-only';
         button.innerHTML = "?";
-        button.className = "ft-button-information";
+        button.className = "ft-button ft-button-information";
     };
     
     // hideInfo();

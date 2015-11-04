@@ -9,13 +9,39 @@
 .js .ft-audio-player-custom {
     display: flex;
     flex-direction: column;
-    // height: 100vh;
+    // flex-flow: row wrap;
+    // align-content: flex-end;
 }
 
 .ft-button-reset {
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
+    left: 8px;
+    
+}
+
+.ft-button-play {
+    // position: absolute;
+    bottom: 90px;
+    width: $ft-buttons-play-diameter;
+    height: $ft-buttons-play-diameter;
+    background: $lime-green;
+    left: calc(50% - 66px);
+}
+
+.ft-slider-total {
+    position: absolute;
+}
+
+.ft-button-increase, .ft-button-reduce, .ft-slider-total{
+    bottom: 35px;
+}
+
+.ft-button-increase {
+    right: calc(50%);
+}
+
+.ft-button-reduce {
+    left: calc(50%);
 }
 
 // .ft-countdown {

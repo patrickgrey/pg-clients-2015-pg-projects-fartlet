@@ -5,9 +5,10 @@ html, body {
 
 body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-size: 18px;
-  color: #333;
-  background: $lime-green;
+  font-size: 16px;
+  color: white;
+  // background: $lime-green;
+  background: $slate-grey;
 }
 
 h1 {
@@ -18,7 +19,8 @@ h1 {
 }
 
 .ft-header {
-  background: $sky-blue;
+  // background: $sky-blue;
+  background: $shock-yellow;
 }
 
 // Centre native audio player
@@ -42,6 +44,23 @@ h1 {
 
 .js .ft-js-only-text {
   display: inline;
+}
+
+.ft-button {
+  position: absolute;
+  width: $ft-buttons-smallest-diameter;
+  height: $ft-buttons-smallest-diameter;
+  border-radius: 50%;
+  border: solid 3px #333;
+  box-shadow: 0 0 0 3px $shock-yellow;
+  color: #333;
+  background: white;
+  outline:none;
+}
+
+.ft-button:active, .ft-button:focus {
+  border: solid 3px #f3f;
+  outline: 0;
 }
 
 @media (min-width: 200px) {

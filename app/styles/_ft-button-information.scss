@@ -5,26 +5,27 @@
   top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
   right: 8px;
   margin: 0 auto;
-  width: $ft-buttons-smallest-diameter;
-  height: $ft-buttons-smallest-diameter;
   font-size: 1.5em;
+  font-weight: bold;
   border-radius: 50%;
-  color: #fff;
-  background-color: #085390;
-  border: none;
+  // color: #085390;
+  // background-color: $sky-blue;
+  // border: none;
   z-index: 1;
-  outline: none;
+  // outline: none;
   transform: rotate(0deg);
   transition: transform 0.3s ease;
 }
 
-.ft-button-information:active {
-  background-color: #1565C0;
-}
+// .ft-button-information:active {
+//   // background-color: #1565C0;
+//   border: solid 3px #f3f;
+// }
 
-.ft-button-information:focus {
-  background-color: #1565C0;
-}
+// .ft-button-information:focus {
+//   // background-color: #1565C0;
+//   border: solid 3px #f3f;
+// }
 
 .js .ft-button-information-close {
   background: #FF5722;

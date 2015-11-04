@@ -19,6 +19,9 @@
     
 }
 
+// Need to set diameter depending on largest of height or width depending on ratio
+// This will probably depend on orientation
+// Can use media queries to check orientation!!
 .ft-button-play {
     // position: absolute;
     bottom: 100px;
@@ -26,6 +29,26 @@
     height: $ft-buttons-play-diameter;
     background: $lime-green;
     left: calc(50% - 66px);
+}
+
+@media all and (orientation: portrait) { 
+
+    .ft-button-play {
+        width: 60vw;
+        height: 60vw;
+        left: 20vw;
+    }
+    
+}
+
+@media all and (orientation: landscape) { 
+
+    .ft-button-play {
+        width: 40vh;
+        height: 40vh;
+        left: calc(50% - 20vh);
+    }
+    
 }
 
 .ft-slider-total {

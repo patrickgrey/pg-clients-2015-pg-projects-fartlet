@@ -1,0 +1,24 @@
+.ft-button {
+    width: $ft-buttons-smallest-diameter;
+    height: $ft-buttons-smallest-diameter;
+    border-radius: 50%;
+    border: solid 3px #333;
+    box-shadow: 0 0 0 3px $shock-yellow;
+    outline: none;
+}
+
+.ft-button:active {
+    border: solid 3px $sexy-pink;
+}
+
+.ft-button:focus {
+    // border: solid 3px $sexy-pink;
+    box-shadow: 0 0 0 3px $sexy-pink;
+}
+
+.ft-button-accessible {
+    width: 100%;
+    color: black;
+    margin-bottom: 0.5em;
+}
+

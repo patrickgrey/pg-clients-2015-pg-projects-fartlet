@@ -133,18 +133,19 @@
     
       <div class="ft-audio-wrapper">
           
-          <div id="audio-player" class="ft-audio-player-custom">
-            <p>SVG to appear here.</p>
+          <div class="ft-audio-player-custom">
+            <p id="ft-svg-play">SVG to appear here.</p>
           </div>
           
-          <div id="audio-player-accessible" class="ft-audio-player-custom-accessible">
-            <!-- <p class="ft-countdown">30</p>
-            <p class="ft-total">5</p> -->
-            <button class="ft-button ft-button-play" id="ft-button-play-id">Play</button>
-            <button class="ft-button ft-button-increase" id="ft-button ft-button-increase-id">Increase Fartlet count</button>
-            <button class="ft-button ft-button-reduce" id="ft-button ft-button-reduce-id">Reduce Fartlet count</button>
-            <label for="ft-slider-total-id" class="ft-screen-reader-text">Select total fartlek repetitions.</label><input id="ft-slider-total-id" class="ft-slider-total" type="range" />
-            <button id="ft-button ft-button-reset-id" class="ft-button ft-button-reset">Reset</button>
+          <div class="ft-audio-player-custom-accessible">
+            <button id="ft-button-play-id" class="ft-button-play ft-button-accessible">Play</button>
+            <button class="ft-button-pause ft-button-accessible">Pause</button>
+            <label for="ft-slider-total-id" class="ft-label-accessible">Select number of sets.</label><input id="ft-slider-time-id" class="ft-slider-time ft-slider-accessible" type="range" />
+            <label for="ft-slider-total-id" class="ft-label-accessible">Select time for each Fartlek.</label><input id="ft-slider-sets-id" class="ft-slider-sets ft-slider-accessible" type="range" />
+            <p class="ft-countdown">Time left: 30</p>
+            <p class="ft-total">Sets left: 5</p>
+            <button class="ft-button-reset ft-button-accessible">Reset</button>
+            <a class="ft-return-to-svg" href="#ft-svg-play">Use alternative controls.</a>
           </div>
           
           <audio  id="ft-audio-id" class="ft-audio" controls preload loop>

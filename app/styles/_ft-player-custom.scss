@@ -9,6 +9,20 @@
       // flex-flow: row wrap;
       // align-content: flex-end;
     }
+    
+    .ft-audio-player-custom-accessible {
+      margin-top: 2em;
+    }
+    
+    .ft-label-accessible, .ft-slider-accessible {
+      display: block;
+      width: 100%;
+      margin: 1em 0 0.5em 0;
+    }
+    
+    .ft-return-to-svg {
+      color: white;
+    }
 }
 
 // .ft-audio-player-custom {

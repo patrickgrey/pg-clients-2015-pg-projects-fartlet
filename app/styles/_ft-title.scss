@@ -1,27 +1,6 @@
-.ft-header {
-    min-height: $ft-title-height;
-    // margin-bottom: $ft-title-margin-bottom;
-}
+.js {
 
-.svg .ft-title {
-    @include ft-screen-reader-text();
-}
-
-.pg-clients-2015-pg-projects-fartlet-title-container {
-    display: none;
-}
-
-.svg .pg-clients-2015-pg-projects-fartlet-title-container {
-    display: block;
-    margin: 5px 10px 0 10px;
-    max-height: 35px;
-    // margin-top: 5px;
-}
-
-@media (min-width: 350px) {
-  
-  .svg .pg-clients-2015-pg-projects-fartlet-title-container {
-    margin-top: 15px;
-  }
-  
+    .ft-header {
+        min-height: $ft-title-height;
+    }
 }

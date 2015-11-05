@@ -1,7 +1,7 @@
 var infoButton = require('./infoButton.js'),
-    // customPlayerControls = require('./customPlayerControls.js'),
+    activateAccessibleControls = require('./activateAccessibleControls.js'),
     _ = require('underscore');
 
 
 var infoButtonElement = infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
-// customPlayerControls('ft-button ft-button-reset-id', 'ft-button ft-button-increase-id', 'ft-button ft-button-reduce-id');
+activateAccessibleControls('ft-skip-to-player', 'ft-return-to-svg', 'ft-audio-player-custom', 'ft-audio-player-custom-accessible');

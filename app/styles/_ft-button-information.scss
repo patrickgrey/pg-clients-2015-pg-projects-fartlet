@@ -1,64 +1,33 @@
 /* Information button and tooltip style dialogue with content. */
 
-.ft-button-information {
-  position: absolute;
-  top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
-  right: 8px;
-  margin: 0 auto;
-  font-size: 1.5em;
-  font-weight: bold;
-  border-radius: 50%;
-  // color: #085390;
-  // background-color: $sky-blue;
-  // border: none;
-  z-index: 1;
-  // outline: none;
-  transform: rotate(0deg);
-  transition: transform 0.3s ease;
-}
-
-// .ft-button-information:active {
-//   // background-color: #1565C0;
-//   border: solid 3px #f3f;
-// }
-
-// .ft-button-information:focus {
-//   // background-color: #1565C0;
-//   border: solid 3px #f3f;
-// }
-
-.js .ft-button-information-close {
-  background: #FF5722;
-  transform: rotate(180deg);
-}
-
-.ft-information {
-  color: $dark-blue; 
-  margin: 0;
-  padding-top: $ft-buttons-smallest-diameter/2;
-  background: $shock-yellow;
-  // padding: 1em  0.3em;
-  word-wrap: break-word;
-  z-index: 1;
-  // border-radius: ($ft-buttons-smallest-diameter/2);
-  // border-top-left-radius: 0;
-}
-
-// Need to hide the container and position it if JS is available.
 .js {
-  .ft-information {
-    // color: red;
-    width: 100%;
-    position: absolute;
-    top: $ft-title-height;
-    // right: 8px;
-  }
-}
-
-@media (min-width: 200px) {
   
   .ft-button-information {
-    
+    position: absolute;
+    top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
+    right: 8px;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: $dark-blue;
+    z-index: 1;
+    transform: rotate(0deg);
+    transition: transform 0.3s ease;
   }
-  
+
+  .ft-button-information-close {
+    background: #FF5722;
+    transform: rotate(180deg);
+  }
+
+  .ft-information {
+    position: absolute;
+    top: $ft-title-height;
+    color: $dark-blue; 
+    margin: 0;
+    padding-top: $ft-buttons-smallest-diameter/2;
+    background: $shock-yellow;
+    word-wrap: break-word;
+    z-index: 1;
+  }
+
 }

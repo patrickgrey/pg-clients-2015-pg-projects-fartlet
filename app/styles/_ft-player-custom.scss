@@ -16,7 +16,7 @@
 .ft-button-reset {
     top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
     left: 8px;
-    
+    z-index: 1;
 }
 
 // Need to set diameter depending on largest of height or width depending on ratio
@@ -60,42 +60,12 @@
 }
 
 .ft-button-increase {
-    left: calc(50% + 86px);
+    // left: calc(50% + 86px);
+    left: 8px;
 }
 
 .ft-button-reduce {
-    left: calc(50% - 86px - 44px);
+    // left: calc(50% - 86px - 44px);
+    right: 8px;
 }
 
-// .ft-countdown {
-//     margin: 0;
-//     // display: block;
-//     // position: absolute;
-//     // top: 0.7em;
-//     // left: 50%;
-//     // margin-left: -1.25em;
-//     // margin: 0.25em auto 0 auto;
-//     width: 2.5em;
-//     height: 2.5em;
-//     background: #F0F4C3;
-//     border-radius: 50%;
-//     text-align: center;
-//     font-size: 4em;
-//     // line-height: 2.5em;
-//     font-weight: bold;
-// }
-
-// .ft-total {
-//     margin: 0;
-//     // display: block;
-//     // position: absolute;
-//     width: 1.5em;
-//     height: 1.5em;
-//     // top: 1.5em;
-//     // right: 18%;
-//     font-size: 2.5em;
-//     background: #CDDC39;
-//     border-radius: 50%;
-//     // line-height: 1.5em;
-//     text-align: center;
-// }

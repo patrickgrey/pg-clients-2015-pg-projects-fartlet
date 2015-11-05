@@ -33,22 +33,25 @@
 }
 
 .ft-information {
-  color: #fff;
-  margin: 1em 0;
-  background: $info-blue;
-  padding: 1em  1em 0.5em 1em;
-  border-radius: ($ft-buttons-smallest-diameter/2);
-  border-top-left-radius: 0;
+  color: $info-blue; 
+  margin: 0;
+  padding-top: $ft-buttons-smallest-diameter/2;
+  background: $shock-yellow;
+  // padding: 1em  0.3em;
+  word-wrap: break-word;
+  z-index: 1;
+  // border-radius: ($ft-buttons-smallest-diameter/2);
+  // border-top-left-radius: 0;
 }
 
 // Need to hide the container and position it if JS is available.
 .js {
   .ft-information {
     // color: red;
-    width: 80%;
+    width: 100%;
     position: absolute;
-    top: 25px;
-    right: 8px;
+    top: $ft-title-height;
+    // right: 8px;
   }
 }
 

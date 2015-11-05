@@ -26,7 +26,10 @@
     <!-- endbuild -->
   </head>
   <body>
-    <a href="#ft-button-play-id" class="ft-skip-to-player">Skip to play/pause button</a>
+    <!-- Skip link left in despite good advice from http://www.iheni.com/skip-links-on-mobile-and-tablets/ -->
+    <!-- The skip link needs to be hidden from most readers but screen readers on mobile should see this
+     and it will allow them to enable accessible controls.-->
+    <a href="#ft-button-play-id" class="ft-skip-to-player">Activate and go to accessible controls.</a>
 
     <div id="ft-wrapper-id" class="ft-wrapper">
 
@@ -35,9 +38,9 @@
 
         <h1 class="ft-title ft-emoji-fart">Fartlets!</h1>
         
-        <svg version="1.1" id="pg-clients-2015-pg-projects-fartlet-title-id" class="pg-clients-2015-pg-projects-fartlet-title-container" x="0px" y="0px" viewBox="0 0 352.6 56.9" >
-          <title>Fartlets!</title>
-          <description>An image of fartlets text with a cheeky wee fart coming out the back!</description>
+        <svg version="1.1" id="pg-clients-2015-pg-projects-fartlet-title-id" class="pg-clients-2015-pg-projects-fartlet-title-svg" x="0px" y="0px" viewBox="0 0 352.6 56.9" aria-labelledby="title description">
+          <title id="title">Fartlets!</title>
+          <description id="description">An image of fartlets text with a cheeky wee fart coming out the back!</description>
           <style type="text/css">
             .pg-clients-2015-pg-projects-fartlet-title{fill:#085390;}
             .pg-clients-2015-pg-projects-fartlet-title-fill{fill:#FFFFFF;}
@@ -119,7 +122,7 @@
       <!-- <div id="ft-content-id" class="ft-content"> -->
 
         <div id="ft-information-id" class="ft-information ft-screen-reader-text-js-only">
-          <p>This app allows you to listen to <span class="ft-js-only-text">and watch </span>a Fartlek countdown to time your runs.<span class="ft-js-only-text"> You can adjust the length of each fartlek and the number of repetitions.</span></p>
+          <p>This app allows you to listen to <span class="ft-js-only-text">and watch </span>a Fartlek countdown to time your runs.<span class="ft-js-only-text"> You can adjust the time for each fartlek and the number of sets.</span></p>
           <!-- <p>You can read more about <a href="https://en.wikipedia.org/wiki/Fartlek">Fartleks on Wikipedia.</a></p> -->
           <p>Developer note: I call Fartleks Fartlets because I'm incurably immature.<br>patrickgrey.co.uk</p>
 
@@ -131,6 +134,10 @@
       <div class="ft-audio-wrapper">
           
           <div id="audio-player" class="ft-audio-player-custom">
+            <p>SVG to appear here.</p>
+          </div>
+          
+          <div id="audio-player-accessible" class="ft-audio-player-custom-accessible">
             <!-- <p class="ft-countdown">30</p>
             <p class="ft-total">5</p> -->
             <button class="ft-button ft-button-play" id="ft-button-play-id">Play</button>

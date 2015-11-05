@@ -1,0 +1,74 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 20px;
+  color: white;
+  background: $slate-grey;
+}
+// Sets foundation for a sticky footer where audio is to allow easier thumb access.
+// (progressive - may not have flex!)
+.ft-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.ft-header {
+  background: $shock-yellow;
+}
+
+.ft-title {
+  color: $dark-blue;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-style: italic;
+}
+
+// Hide svg as default
+.pg-clients-2015-pg-projects-fartlet-title-svg {
+  display: none;
+}
+
+// Hide accessibly if SVG can be shown instead.
+.inlinesvg .ft-title {
+  @include ft-screen-reader-text();
+}
+
+// Show SVG if supported
+.inlinesvg .pg-clients-2015-pg-projects-fartlet-title-svg {
+  display: block;
+  margin: 10px auto 0 auto;
+  max-height: 35px;
+}
+
+.ft-information {
+  flex: 1; // expand to fit available space, forcing audio to bottom.
+  margin: 0;
+  padding: 1em;
+  color: $dark-blue; 
+  background: $shock-yellow;
+  word-wrap: break-word;
+}
+
+// Hide as default
+.ft-audio-player-custom {
+  display: none;
+}
+
+// Hide as default
+.ft-audio-player-custom-accessible {
+  display: none;
+}
+
+// Increase size of native player to make buttons easier to select. Nasty hack!
+[controls] {
+  width:100%;
+  transform: scaleY(2);
+  background: black;
+  margin:1em auto;
+}

@@ -107,6 +107,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   browserSync({
     notify: false,
+    // host: "192.168.1.71",
     port: 9000,
     server: {
       baseDir: ['.tmp', 'app'],
@@ -142,6 +143,7 @@ gulp.task('serve:dist', () => {
 
 gulp.task('serve:test', () => {
   browserSync({
+    host: "192.168.1.71",
     notify: false,
     https: true,
     port: 9000,

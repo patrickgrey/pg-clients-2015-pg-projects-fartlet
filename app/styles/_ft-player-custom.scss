@@ -1,71 +1,73 @@
-.js .ft-audio {
-    display: none;
-}
-
-.ft-audio-player-custom {
-    display: none;
-}
-
-.js .ft-audio-player-custom {
-    display: flex;
-    flex-direction: column;
-    // flex-flow: row wrap;
-    // align-content: flex-end;
-}
-
-.ft-button-reset {
-    top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
-    left: 8px;
-    z-index: 1;
-}
-
-// Need to set diameter depending on largest of height or width depending on ratio
-// This will probably depend on orientation
-// Can use media queries to check orientation!!
-.ft-button-play {
-    // position: absolute;
-    bottom: 100px;
-    width: $ft-buttons-play-diameter;
-    height: $ft-buttons-play-diameter;
-    background: $lime-green;
-    left: calc(50% - 66px);
-}
-
-@media all and (orientation: portrait) { 
-
-    .ft-button-play {
-        width: 60vw;
-        height: 60vw;
-        left: 20vw;
+.js {
+    .ft-audio {
+      display: none;
     }
     
-}
-
-@media all and (orientation: landscape) { 
-
-    .ft-button-play {
-        width: 40vh;
-        height: 40vh;
-        left: calc(50% - 20vh);
+    .ft-audio-player-custom {
+      display: block;
+      // flex-direction: column;
+      // flex-flow: row wrap;
+      // align-content: flex-end;
     }
+}
+
+// .ft-audio-player-custom {
+//     display: none;
+// }
+
+// .ft-button-reset {
+//     top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
+//     left: 8px;
+//     z-index: 1;
+// }
+
+// // Need to set diameter depending on largest of height or width depending on ratio
+// // This will probably depend on orientation
+// // Can use media queries to check orientation!!
+// .ft-button-play {
+//     // position: absolute;
+//     bottom: 100px;
+//     width: $ft-buttons-play-diameter;
+//     height: $ft-buttons-play-diameter;
+//     background: $lime-green;
+//     left: calc(50% - 66px);
+// }
+
+// @media all and (orientation: portrait) { 
+
+//     .ft-button-play {
+//         width: 60vw;
+//         height: 60vw;
+//         left: 20vw;
+//     }
     
-}
+// }
 
-.ft-slider-total {
-    position: absolute;
-}
+// @media all and (orientation: landscape) { 
 
-.ft-button-increase, .ft-button-reduce, .ft-slider-total{
-    bottom: 35px;
-}
+//     .ft-button-play {
+//         width: 40vh;
+//         height: 40vh;
+//         left: calc(50% - 20vh);
+//     }
+    
+// }
 
-.ft-button-increase {
-    // left: calc(50% + 86px);
-    left: 8px;
-}
+// .ft-slider-total {
+//     position: absolute;
+// }
 
-.ft-button-reduce {
-    // left: calc(50% - 86px - 44px);
-    right: 8px;
-}
+// .ft-button-increase, .ft-button-reduce, .ft-slider-total{
+//     bottom: 35px;
+// }
+
+// .ft-button-increase {
+//     // left: calc(50% + 86px);
+//     left: 8px;
+// }
+
+// .ft-button-reduce {
+//     // left: calc(50% - 86px - 44px);
+//     right: 8px;
+// }
 

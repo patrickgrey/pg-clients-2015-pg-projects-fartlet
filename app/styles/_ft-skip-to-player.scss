@@ -1,17 +1,27 @@
+// Hide by default (if no JavaScript, can't use anyway!)
 .ft-skip-to-player {
-  padding: 1em 1em 1em;
-  position: absolute;
-  top: -7em;
-  left: 0;
-  color: #fff;
-  background: #666;
-  transition: top .5s ease-in;
-  z-index: 100;
+  display: none;
 }
 
-.ft-skip-to-player:focus {
-    position: absolute;
-    top: 0;
-    outline: 0;
-    transition: top .3s ease-in;
+.js {
+    .ft-skip-to-player {
+      display:block;
+      padding: 10%;
+      width: 80%;
+      position: absolute;
+      top: -7em;
+      left: 0;
+      color: white;
+      background: black;
+      transition: top .5s ease-in;
+      z-index: 100;
+      font-size: 2em;
+    }
+
+    .ft-skip-to-player:focus {
+        position: absolute;
+        top: 0;
+        outline: 0;
+        transition: top .3s ease-in;
+  }
 }

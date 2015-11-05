@@ -17,3 +17,12 @@
 .js .ft-screen-reader-text-js-only {
     @include ft-screen-reader-text();
 }
+
+// Hide some text (as features not available without javascript) and custom player controls if no JS present
+.ft-js-only-text {
+  display: none;
+}
+
+.js .ft-js-only-text {
+  display: inline;
+}

@@ -44,8 +44,11 @@
     }
     
     .ft-audio-player-custom-btn-play-text {
+      // text-align: center;
+      // text-anchor: end;
       fill:$slate-grey;
       font-size:80px;
+      background: red;
     }
     
     .ft-audio-player-custom-btn-play-icon-play, .ft-audio-player-custom-btn-time-centre {
@@ -119,10 +122,27 @@
     @media all and (orientation: landscape) { 
 
       .pg-clients-2015-pg-projects-fartlet-button-play-svg {
-          width: 50vh;
-          height: 50vh;
-          left: calc(50% - 25vh);
-          bottom: 15vh;
+          width: 70vh;
+          height: 70vh;
+          right: 20px;
+          left: calc(78vw - 70vh);
+          bottom: -10px;
+      }
+      
+      .pg-clients-2015-pg-projects-fartlet-button-reset-svg {
+        width: 25vh;
+        height: 25vh;
+        // left: 18vw; // width/2
+        left: 10px; // width/2
+        bottom: 13px;
+        // background: red;
+      }
+      
+      .clients-2015-pg-projects-fartlet-button-sets-svg {
+        width: 62vh;
+        height: 62vh;
+        right: 0px; // width/2
+        bottom: 14px;
       }
       
     }

@@ -2,8 +2,9 @@
     width: $ft-buttons-smallest-diameter;
     height: $ft-buttons-smallest-diameter;
     border-radius: 50%;
-    border: solid 3px #333;
-    box-shadow: 0 0 0 3px $shock-yellow;
+    border: solid 5px $shock-yellow;
+    // border: none;
+    // box-shadow: 0 0 0 3px $shock-yellow;
     outline: none;
 }
 

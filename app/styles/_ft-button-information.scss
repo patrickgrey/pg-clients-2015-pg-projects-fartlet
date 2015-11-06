@@ -1,8 +1,12 @@
 /* Information button and tooltip style dialogue with content. */
+.ft-button-information {
+  display: none;
+}
 
 .js {
   
   .ft-button-information {
+    display: block;
     position: absolute;
     top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
     right: 8px;

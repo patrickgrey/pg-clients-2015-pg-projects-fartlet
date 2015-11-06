@@ -5,9 +5,6 @@
     
     .ft-audio-player-custom {
       display: block;
-      // flex-direction: column;
-      // flex-flow: row wrap;
-      // align-content: flex-end;
     }
     
     .ft-audio-player-custom-accessible {
@@ -23,65 +20,82 @@
     .ft-return-to-svg {
       color: white;
     }
+    
+    // Buttons styling
+
+    // .ft-audio-player-custom-info-text {
+    //   fill:#CCCCCC;
+    //   font-size:18px;
+    // }
+    // 
+    // General styling
+    .ft-audio-player-custom-btn {
+      stroke:white;
+      stroke-width:8;
+      stroke-miterlimit:10;
+    }
+    // Play button
+    .ft-audio-player-custom-btn-play-centre {
+      fill:$lime-green;
+    }
+    
+    .ft-audio-player-custom-btn-play-text {
+      fill:$slate-grey;
+      font-size:80px;
+    }
+    
+    .ft-audio-player-custom-btn-play-icon-play, .ft-audio-player-custom-btn-time-centre {
+      fill:$dark-blue;
+    }
+    
+    .ft-audio-player-custom-btn-time-arrow {
+      fill: $shock-yellow;
+    }
+    
+    // Reset button
+    .ft-audio-player-custom-btn-reset-centre {
+      fill: $bright-orange;
+    }
+    
+    
+    // Buttons positioning
+    
+    // Play button
+    .pg-clients-2015-pg-projects-fartlet-button-play-svg, .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
+      width: 60vw;
+      height: 60vw;
+      position: absolute;
+      left: 10vw; // width/2
+      bottom: 20px;
+      background: red;
+    }
+    
+    .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
+      left: 28vw;
+      bottom: 10px;
+    }
+    // Reset button
+    // 
+    .pg-clients-2015-pg-projects-fartlet-button-reset-svg {
+      width: 20vw;
+      height: 20vw;
+      position: absolute;
+      right: 8vw; // width/2
+      bottom: 10vw;
+      background: red;
+    }
+    
+
+
+    @media all and (orientation: landscape) { 
+
+      .pg-clients-2015-pg-projects-fartlet-button-play-svg {
+          width: 50vh;
+          height: 50vh;
+          left: calc(50% - 25vh);
+          bottom: 15vh;
+      }
+      
+    }
+
 }
-
-// .ft-audio-player-custom {
-//     display: none;
-// }
-
-// .ft-button-reset {
-//     top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
-//     left: 8px;
-//     z-index: 1;
-// }
-
-// // Need to set diameter depending on largest of height or width depending on ratio
-// // This will probably depend on orientation
-// // Can use media queries to check orientation!!
-// .ft-button-play {
-//     // position: absolute;
-//     bottom: 100px;
-//     width: $ft-buttons-play-diameter;
-//     height: $ft-buttons-play-diameter;
-//     background: $lime-green;
-//     left: calc(50% - 66px);
-// }
-
-// @media all and (orientation: portrait) { 
-
-//     .ft-button-play {
-//         width: 60vw;
-//         height: 60vw;
-//         left: 20vw;
-//     }
-    
-// }
-
-// @media all and (orientation: landscape) { 
-
-//     .ft-button-play {
-//         width: 40vh;
-//         height: 40vh;
-//         left: calc(50% - 20vh);
-//     }
-    
-// }
-
-// .ft-slider-total {
-//     position: absolute;
-// }
-
-// .ft-button-increase, .ft-button-reduce, .ft-slider-total{
-//     bottom: 35px;
-// }
-
-// .ft-button-increase {
-//     // left: calc(50% + 86px);
-//     left: 8px;
-// }
-
-// .ft-button-reduce {
-//     // left: calc(50% - 86px - 44px);
-//     right: 8px;
-// }
-

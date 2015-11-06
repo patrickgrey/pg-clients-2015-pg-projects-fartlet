@@ -123,6 +123,7 @@
 
         <div id="ft-information-id" class="ft-information ft-screen-reader-text-js-only">
           <p>This app allows you to listen to <span class="ft-js-only-text">and watch </span>a Fartlek countdown to time your runs.<span class="ft-js-only-text"> You can adjust the time for each fartlek and the number of sets.</span></p>
+          <p class="ft-js-only-text">Drag the buttons at the edge of the circles to change settings. Press the big button to start running.</p>
           <!-- <p>You can read more about <a href="https://en.wikipedia.org/wiki/Fartlek">Fartleks on Wikipedia.</a></p> -->
           <p>Developer note: I call Fartleks Fartlets because I'm incurably immature.<br>patrickgrey.co.uk</p>
 
@@ -134,7 +135,48 @@
       <div class="ft-audio-wrapper">
           
           <div class="ft-audio-player-custom">
-            <p id="ft-svg-play">SVG to appear here.</p>
+          
+          
+          <svg class="pg-clients-2015-pg-projects-fartlet-button-play-svg" version="1.1" x="0px" y="0px" viewBox="-8 12 280 260" >
+          
+            <g class="ft-audio-player-custom-btn-play">
+              <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-play-centre" cx="144" cy="132" r="122.5"/>
+              <text class="ft-audio-player-custom-btn-play-text" transform="matrix(1 0 0 1 77.2617 155.5277)">999</text>
+              <polygon class="ft-audio-player-custom-btn-play-icon-play" points="129.9,205.5 129.9,184.9 147,195.1 164.7,205.3 147.4,215.7 130,226.2"/>
+            </g>
+            
+            <g class="ft-audio-player-custom-btn-time">
+              <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-time-centre" cx="41" cy="60" r="44"/>
+              <polygon class="ft-audio-player-custom-btn-time-arrow" points="34.8,68 40.4,72.2 34,74.7 27.7,77.3 28.5,70.5 29.3,63.7       "/>
+              <polygon class="ft-audio-player-custom-btn-time-arrow" points="48.1,45.2 54.5,42.6 53.5,49.3 52.4,56.1 47,51.9 41.6,47.8       "/>
+            </g>
+
+          </svg>
+          
+          
+          <!-- <svg class="pg-clients-2015-pg-projects-fartlet-button-play-svg-2" version="1.1" x="0px" y="0px" viewBox="0 0 275 300" >
+            
+            <g id="btn-time" class="ft-audio-player-custom-btn-time">
+              <circle id="btn-time-centre" class="ft-audio-player-custom-btn ft-audio-player-custom-btn-time-centre" cx="41" cy="60" r="44"/>
+              <circle id="btn-time-centre" class="ft-audio-player-custom-btn ft-audio-player-custom-btn-time-centre" cx="41" cy="250" r="44"/>
+            </g>
+
+          </svg> -->
+          
+          <svg class="pg-clients-2015-pg-projects-fartlet-button-reset-svg" version="1.1" x="0px" y="0px" viewBox="-438 225 80 80" >
+          
+            <g class="ft-audio-player-custom-btn-reset">
+              <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-reset-centre" cx="-396.1" cy="261.4" r="32.5"/>
+              <path class="ft-audio-player-custom-btn-reset-arrow" d="M-378.2,262c0,9.9-8.1,18-18,18s-18-8.1-18-18c0-9.9,8.1-18,18-18"/>
+              <polygon class="ft-audio-player-custom-btn-reset-arrow" points="-396.8,244.5 -396.9,236.8 -390.4,240.6 -383.8,244.4 -390.3,248.3 -396.7,252.2"/>
+            </g>
+
+          </svg>
+          
+          
+          
+          
+            
           </div>
           
           <div class="ft-audio-player-custom-accessible">

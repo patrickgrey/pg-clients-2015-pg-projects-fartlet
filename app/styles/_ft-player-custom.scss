@@ -29,10 +29,14 @@
     // }
     // 
     // General styling
-    .ft-audio-player-custom-btn {
+    .ft-audio-player-custom-btn, .ft-audio-player-custom-btn-small {
       stroke:white;
       stroke-width:8;
       stroke-miterlimit:10;
+    }
+    
+    .ft-audio-player-custom-btn-small {
+      stroke-width:6;
     }
     // Play button
     .ft-audio-player-custom-btn-play-centre {
@@ -49,12 +53,28 @@
     }
     
     .ft-audio-player-custom-btn-time-arrow {
-      fill: $shock-yellow;
+      fill: white;
+    }
+    
+    .ft-audio-player-custom-btn-play-outline {
+      fill: none;
+      stroke: red;
     }
     
     // Reset button
     .ft-audio-player-custom-btn-reset-centre {
-      fill: $bright-orange;
+      fill: $lovely-red;
+    }
+    
+    .ft-audio-player-custom-btn-reset-arrow {
+      fill: white;
+    }
+    
+    .ft-audio-player-custom-btn-reset-curve {
+      fill: none;
+      stroke: white;
+      stroke-width:5;
+      stroke-miterlimit:10;
     }
     
     
@@ -62,27 +82,36 @@
     
     // Play button
     .pg-clients-2015-pg-projects-fartlet-button-play-svg, .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
-      width: 60vw;
-      height: 60vw;
+      width: 65vw;
+      height: 65vw;
       position: absolute;
-      left: 10vw; // width/2
+      left: 5vw; // width/2
       bottom: 20px;
-      background: red;
+      // background: red;
     }
     
-    .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
-      left: 28vw;
-      bottom: 10px;
-    }
+    // .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
+    //   left: 28vw;
+    //   bottom: 10px;
+    // }
     // Reset button
     // 
     .pg-clients-2015-pg-projects-fartlet-button-reset-svg {
-      width: 20vw;
-      height: 20vw;
+      width: 18vw;
+      height: 18vw;
       position: absolute;
-      right: 8vw; // width/2
-      bottom: 10vw;
-      background: red;
+      right: 18vw; // width/2
+      bottom: 20px;
+      // background: red;
+    }
+    
+    // Sets buttons
+    .clients-2015-pg-projects-fartlet-button-sets-svg {
+      width: 42vw;
+      height: 42vw;
+      position: absolute;
+      right: 5vw; // width/2
+      bottom: 114px;
     }
     
 

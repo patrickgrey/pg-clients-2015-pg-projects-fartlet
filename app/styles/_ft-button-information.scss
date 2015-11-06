@@ -24,8 +24,8 @@
   }
 
   .ft-information {
-    position: absolute;
-    top: $ft-title-height;
+    // position: absolute;
+    margin-top: $ft-title-height;
     color: $dark-blue; 
     margin: 0;
     padding-top: $ft-buttons-smallest-diameter/2;

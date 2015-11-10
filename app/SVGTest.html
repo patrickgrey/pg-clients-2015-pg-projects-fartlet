@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#26292C">
+    <meta name="theme-color" content="#ffff00">
     
     <title>Fartlets!</title>
 
@@ -134,13 +134,44 @@
     
       <div class="ft-audio-wrapper">
           
-          <div class="ft-audio-player-custom">
+          <div id="ft-audio-player-custom-id" class="ft-audio-player-custom">
           
           
           <!-- http://codepen.io/osublake/pen/RNZxJx -->
           <!-- http://codepen.io/MAW/pen/QwxXgx -->
-          <!-- http://codepen.io/sdras/pen/doZReX -->
           
+          
+          
+            <!-- <svg class="pg-clients-2015-pg-projects-fartlet-button-play-svg" version="1.1" id="btn-play-container" x="0px" y="0px" viewBox="0 0 341 341" >
+            
+              <g id="ft-audio-player-custom-btn-time-id" class="ft-audio-player-custom-btn-play">
+                <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-play-centre" cx="0" cy="0" r="122.5"/>
+                <circle id="ft-audio-player-custom-btn-time-centre-id" class="ft-audio-player-custom-btn-small ft-audio-player-custom-btn-time-centre" cx="-99" cy="-66" r="43.5"/>
+              </g>
+            
+              <g id="ft-audio-player-custom-btn-time-id" class="ft-audio-player-custom-btn-play">
+                <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-play-centre" cx="171" cy="171" r="122.5"/>
+                <circle id="ft-audio-player-custom-btn-time-centre-id"  class="ft-audio-player-custom-btn-small ft-audio-player-custom-btn-time-centre" cx="72" cy="105" r="43.5"/>
+                <polygon class="ft-audio-player-custom-btn-time-arrow" points="64.1,113.2 69.7,117.2 63.5,119.9 57.2,122.7 57.8,115.9 58.4,109.1 "/>
+                <polygon class="ft-audio-player-custom-btn-time-arrow" points="78.8,86.9 85.3,84.4 84.2,91.1 83.1,97.9 77.7,93.7 72.3,89.5 "/>
+              </g>
+              
+              <g class="ft-audio-player-custom-btn-time">
+                <text transform="matrix(1 0 0 1 104.2617 194.5277)" class="ft-audio-player-custom-btn-play-text"><tspan class="ft-audio-player-custom-btn-play-text-inner" x="70" text-anchor="middle">30</tspan></text>
+                <polygon id="icon-play" class="ft-audio-player-custom-btn-play-icon-play" points="156.9,244.5 156.7,223.9 174,234.1 191.7,244.3 174.4,254.7 157,265.2 "/>
+                <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-time-border" cx="171" cy="171" r="122.5"/>
+              </g>
+              <circle class="ft-audio-player-custom-btn-play-outline" cx="171" cy="171" r="170"/>
+            </svg> -->
+            
+            <svg width="100%" height="100%" id="container"> 
+              <g id="base" class="base">
+                  <rect width="150" height="150" rx="10" ry="10" fill="green" />
+                  <circle id="handle" class="handle" r="20" cy="120" cx="120" fill="#7CFC00" />
+                  <text x="18" y="30" font-size="22" font-family="arial" fill="#7CFC00">I love SVG!</text>
+              </g>
+            </svg>
+            
             
             <svg class="pg-clients-2015-pg-projects-fartlet-button-play-svg" version="1.1" id="btn-play-container" x="0px" y="0px" viewBox="0 0 341 341" >
             
@@ -150,8 +181,13 @@
                 <polygon id="icon-play" class="ft-audio-player-custom-btn-play-icon-play" points="156.9,244.5 156.7,223.9 174,234.1 191.7,244.3 174.4,254.7 157,265.2 "/>
               </g>
               
-              
-              <!-- <circle class="ft-audio-player-custom-btn-play-outline" cx="171" cy="171" r="170"/> -->
+              <g id="ft-audio-player-custom-btn-time-id" class="ft-audio-player-custom-btn-time">
+                <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-time-border" cx="171" cy="171" r="122.5"/>
+                <circle id="ft-audio-player-custom-btn-time-centre-id" class="ft-audio-player-custom-btn-small ft-audio-player-custom-btn-time-centre" cx="72" cy="105" r="43.5"/>
+                <polygon class="ft-audio-player-custom-btn-time-arrow" points="64.1,113.2 69.7,117.2 63.5,119.9 57.2,122.7 57.8,115.9 58.4,109.1 "/>
+                <polygon class="ft-audio-player-custom-btn-time-arrow" points="78.8,86.9 85.3,84.4 84.2,91.1 83.1,97.9 77.7,93.7 72.3,89.5 "/>
+              </g>
+              <circle class="ft-audio-player-custom-btn-play-outline" cx="171" cy="171" r="170"/>
             </svg>
             
             
@@ -199,21 +235,6 @@
 
             </svg>
           
-          <svg class="pg-clients-2015-pg-projects-fartlet-button-time-svg" version="1.1" id="btn-play-container" x="0px" y="0px" viewBox="0 0 341 351" >
-            <g id="ft-audio-player-custom-btn-time-id" class="ft-audio-player-custom-btn-time">
-              <!-- <circle class="ft-audio-player-custom-btn ft-audio-player-custom-btn-time-border" cx="171" cy="171" r="122.5"/> -->
-              <circle  class="ft-audio-player-custom-btn-small ft-audio-player-custom-btn-time-centre" cx="72" cy="105" r="43.5"/>
-              <polygon class="ft-audio-player-custom-btn-time-arrow" points="64.1,113.2 69.7,117.2 63.5,119.9 57.2,122.7 57.8,115.9 58.4,109.1 "/>
-              <polygon class="ft-audio-player-custom-btn-time-arrow" points="78.8,86.9 85.3,84.4 84.2,91.1 83.1,97.9 77.7,93.7 72.3,89.5 "/>
-            </g>
-          </svg>
-          
-<!--             <svg class="pg-clients-2015-pg-projects-fartlet-button-reset-svg" version="1.1" x="0px" y="0px" viewBox="0 0 94.3 94.8" >
-            
-              
-
-            </svg> -->
-          
           
           
           
@@ -257,7 +278,6 @@
     <script src="/bower_components/gsap/src/minified/TweenLite.min.js"></script>
     <script src="/bower_components/gsap/src/minified/utils/Draggable.min.js"></script>
     <script src="/bower_components/gsap/src/minified/plugins/CSSPlugin.min.js"></script>
-    <script src="/bower_components/gsap/src/minified/plugins/ThrowPropsPlugin.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

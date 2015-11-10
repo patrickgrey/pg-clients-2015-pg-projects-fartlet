@@ -133,6 +133,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 
 gulp.task('serve:dist', () => {
   browserSync({
+    open: false,
     notify: false,
     port: 9000,
     server: {

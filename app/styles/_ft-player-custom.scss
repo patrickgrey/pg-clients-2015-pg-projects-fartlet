@@ -5,6 +5,8 @@
     
     .ft-audio-player-custom {
       display: block;
+      position: static;
+      margin-top: -65px;
     }
     
     .ft-audio-player-custom-accessible {
@@ -55,6 +57,12 @@
       fill:$dark-blue;
     }
     
+    // Time button
+    
+    .ft-audio-player-custom-btn-time {
+      cursor: all-scroll; 
+    }
+    
     .ft-audio-player-custom-btn-time-arrow {
       fill: white;
     }
@@ -97,6 +105,14 @@
       // background: red;
     }
     
+    .pg-clients-2015-pg-projects-fartlet-button-time-svg {
+      width: 65vw;
+      height: 65vw;
+      position: absolute;
+      left: 5vw; // width/2
+      bottom: 20px;
+    }
+    
     // .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
     //   left: 28vw;
     //   bottom: 10px;
@@ -117,8 +133,8 @@
       width: 42vw;
       height: 42vw;
       position: absolute;
-      right: 5vw; // width/2
-      bottom: 114px;
+      right: 4.2vw; // width/2
+      bottom: 119px;
     }
     
 

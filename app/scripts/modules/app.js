@@ -1,5 +1,6 @@
-var infoButton = require('./infoButton.js'),
-    activateAccessibleControls = require('./activateAccessibleControls.js'),
+var infoButton = require('./ftInfoButton.js'),
+    activateAccessibleControls = require('./ftActivateAccessibleControls.js'),
+    ftButtons = require('./ftButtons.js'),
     // gsap = require('gsap'),
     // TweenLite = require('https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TimelineLite.min.js'),
     // Draggable = require('../../../node_modules/gsap/src/uncompressed/utils/Draggable.js'),
@@ -10,8 +11,9 @@ var infoButton = require('./infoButton.js'),
     
     
     // TweenLite.to("#ft-audio-player-custom-btn-time-id", 1, {x:100, y:100, scale:0.5, rotation:180, skewX:45});
-    Draggable.create("#ft-audio-player-custom-btn-time-id", {type: "rotation", throwProps: true});
+    
 
 
 var infoButtonElement = infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
 activateAccessibleControls('ft-skip-to-player', 'ft-return-to-svg', 'ft-audio-player-custom', 'ft-audio-player-custom-accessible');
+ftButtons();

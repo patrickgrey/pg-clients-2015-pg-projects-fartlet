@@ -14,9 +14,10 @@ module.exports = function () {
     
     var fartletTime = 30,
         currentRotation = 0,
-        stepLimit = 10,
+        stepLimit = 4,
         stepCount = 0,
-        minimumSeconds = 3;
+        minimumSeconds = 3,
+        timeText = document.getElementById('ft-audio-player-custom-btn-play-text-inner-id');
     
     function test(e) {
         
@@ -25,7 +26,10 @@ module.exports = function () {
         
         var rotation = Math.round(this.target._gsTransform.rotation % 360);
         
-        if (rotation > currentRotation) {
+        if (rotation === currentRotation) {
+            // do nothing
+        }
+        else if (rotation > currentRotation) {
             stepCount++;
         }
         else {
@@ -40,12 +44,19 @@ module.exports = function () {
             fartletTime--;
             stepCount = 0;
         }
-        // else {
-            
-        // }
+        else if(stepCount > stepLimit || stepCount < -stepLimit ){
+            stepCount = 0;
+        }
         
         currentRotation = rotation;
-        console.log(fartletTime);
+        
+        timeText.textContent = fartletTime.toString();
+        // console.log("fartletTime: " + fartletTime);
+        // console.log("stepCount: " + stepCount);
+        console.log("rotation: " + rotation);
+        // console.log("currentRotation: " + currentRotation);
+        
+        
         // first check direction / negative or positive
         // Will need to buffer numbers somewhat.
         
@@ -59,6 +70,10 @@ module.exports = function () {
         //   animation.restart();
         // }
     }
+    
+    // console.log();
+    
+    
     
     //trigger:"#topBar"
 }

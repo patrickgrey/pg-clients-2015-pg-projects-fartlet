@@ -1,13 +1,29 @@
 .js {
+  
+    /**
+    * Player controls
+    */
+    
+    // Hide native audio player if has js for custom controls
+    
     .ft-audio {
       display: none;
     }
+    
+    
+    // Show custom audio player if has js for custom controls
+    // Positioning and margin top required to prevent calculations for drag button being thrown off
     
     .ft-audio-player-custom {
       display: block;
       position: static;
       margin-top: -65px;
     }
+    
+    
+    /**
+     * Accessible controls
+     */
     
     .ft-audio-player-custom-accessible {
       margin-top: 2em;
@@ -23,14 +39,13 @@
       color: white;
     }
     
-    // Buttons styling
-
-    // .ft-audio-player-custom-info-text {
-    //   fill:#CCCCCC;
-    //   font-size:18px;
-    // }
-    // 
+    /**
+     * Buttons styling
+     */
+    
+    
     // General styling
+    
     .ft-audio-player-custom-btn, .ft-audio-player-custom-btn-small {
       stroke:white;
       stroke-width:8;
@@ -40,22 +55,30 @@
     .ft-audio-player-custom-btn-small {
       stroke-width:6;
     }
+    
+    
     // Play button
+    
+    .ft-audio-player-custom-btn-play-hit {
+      cursor: pointer;
+      fill: $lime-green;
+      fill-opacity: 0;
+    }
+    
     .ft-audio-player-custom-btn-play-centre {
       fill:$lime-green;
     }
     
     .ft-audio-player-custom-btn-play-text {
-      // text-align: center;
-      // text-anchor: end;
       fill:$slate-grey;
       font-size:80px;
-      background: red;
+      font-weight: bold;
     }
     
     .ft-audio-player-custom-btn-play-icon-play, .ft-audio-player-custom-btn-time-centre {
       fill:$dark-blue;
     }
+    
     
     // Time button
     
@@ -76,7 +99,36 @@
       fill:none;
     }
     
+    
+    // Sets buttons
+    
+    // Otherwise play button covers. Want play button first in tab index for keyboard users.
+    .ft-button-sets-svg {
+      z-index: 1;
+    }
+    
+    .ft-button-sets-info {
+      fill: white;
+    }
+    
+    .ft-button-sets-info-text {
+      fill:$slate-grey;
+      font-size:40px;
+      font-weight: bold;
+    }
+    
+    .ft-button-sets-info-plus, .ft-button-sets-info-minus {
+      cursor: pointer;
+    }
+    
+    
     // Reset button
+    
+    .ft-button-reset-svg {
+      display: none;
+      cursor: pointer;
+    }
+    
     .ft-audio-player-custom-btn-reset-centre {
       fill: $lovely-red;
     }
@@ -92,11 +144,23 @@
       stroke-miterlimit:10;
     }
     
+    .ft-button-sets-info-plus-circle, .ft-button-sets-info-minus-circle {
+      fill:$bright-orange;
+    }
     
-    // Buttons positioning
+    .ft-button-sets-info-plus-icon, .ft-button-sets-info-minus-icon {
+      fill: white;
+    }
+    
+    
+    /**
+     * Buttons positioning
+     */
+    
     
     // Play button
-    .pg-clients-2015-pg-projects-fartlet-button-play-svg, .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
+    
+    .ft-button-play-svg, .ft-button-play-svg-2 {
       width: 65vw;
       height: 65vw;
       position: absolute;
@@ -105,7 +169,7 @@
       // background: red;
     }
     
-    .pg-clients-2015-pg-projects-fartlet-button-time-svg {
+    .ft-button-time-svg {
       width: 65vw;
       height: 65vw;
       position: absolute;
@@ -113,13 +177,10 @@
       bottom: 20px;
     }
     
-    // .pg-clients-2015-pg-projects-fartlet-button-play-svg-2 {
-    //   left: 28vw;
-    //   bottom: 10px;
-    // }
+    
     // Reset button
-    // 
-    .pg-clients-2015-pg-projects-fartlet-button-reset-svg {
+    
+    .ft-button-reset-svg {
       width: 18vw;
       height: 18vw;
       position: absolute;
@@ -128,12 +189,14 @@
       // background: red;
     }
     
+    
     // Sets buttons
-    .clients-2015-pg-projects-fartlet-button-sets-svg {
-      width: 42vw;
+    
+    .ft-button-sets-svg {
+      // width: 42vw;
       height: 42vw;
       position: absolute;
-      right: 4.2vw; // width/2
+      right: 9.2vw; // width/2
       bottom: 119px;
     }
     
@@ -141,7 +204,7 @@
 
     @media all and (orientation: landscape) { 
 
-      .pg-clients-2015-pg-projects-fartlet-button-play-svg {
+      .ft-button-play-svg {
           width: 70vh;
           height: 70vh;
           right: 20px;
@@ -149,7 +212,7 @@
           bottom: -10px;
       }
       
-      .pg-clients-2015-pg-projects-fartlet-button-reset-svg {
+      .ft-button-reset-svg {
         width: 25vh;
         height: 25vh;
         // left: 18vw; // width/2
@@ -158,7 +221,7 @@
         // background: red;
       }
       
-      .clients-2015-pg-projects-fartlet-button-sets-svg {
+      .ft-button-sets-svg {
         width: 62vh;
         height: 62vh;
         right: 0px; // width/2

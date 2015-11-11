@@ -4,22 +4,54 @@ module.exports = function () {
     // Draggable.create("#svgRectangle", {type: "rotation"});
     
     TweenLite.set("#ft-audio-player-custom-btn-time-id",{svgOrigin:"175 175"});
- 
-    var R = Draggable.create("#ft-audio-player-custom-btn-time-id", {
-        type:"rotation",
-        throwProps:true,
-        onDrag: test,
-        onThrowUpdate:test
-    });
     
     var fartletTime = 30,
         currentRotation = 0,
         stepLimit = 4,
         stepCount = 0,
         minimumSeconds = 3,
-        timeText = document.getElementById('ft-audio-player-custom-btn-play-text-inner-id');
+        currentSets = 10;
+        buttonPlay = document.getElementById('ft-audio-player-custom-btn-play-hit-id'),
+        timeText = document.getElementById('ft-audio-player-custom-btn-play-text-inner-id'),
+        setsText = document.getElementById('ft-button-sets-text-inner-id'),
+        setsPlus = document.getElementById('ft-button-sets-info-plus-id'),
+        setsMinus = document.getElementById('ft-button-sets-info-minus-id');
     
-    function test(e) {
+    var initButtons = function () {
+        
+        Draggable.create("#ft-audio-player-custom-btn-time-id", {
+            type:"rotation",
+            throwProps:true,
+            onDrag: updateTime,
+            onThrowUpdate:updateTime
+        });
+        
+        buttonPlay.addEventListener('click', function (e) {
+            console.log('play');
+        });
+        
+        setsPlus.addEventListener('click', function (e) {
+            // console.log('plus');
+            if (currentSets < 99) {
+                currentSets++;
+                updateSetsInfo();
+            }
+        });
+        
+        setsMinus.addEventListener('click', function (e) {
+            // console.log('plus');
+            if (currentSets > 1) {
+                currentSets--;
+                updateSetsInfo();
+            }
+        });
+        
+        function updateSetsInfo () {
+            setsText.textContent = currentSets.toString();
+        }
+    }
+    
+    var  updateTime = function (e) {
         
         // Not working yet if get to minimum and keep passing it. Need to reverse for a while before
         // counting back up again. Need to log out other numbers.
@@ -51,29 +83,9 @@ module.exports = function () {
         currentRotation = rotation;
         
         timeText.textContent = fartletTime.toString();
-        // console.log("fartletTime: " + fartletTime);
-        // console.log("stepCount: " + stepCount);
-        console.log("rotation: " + rotation);
-        // console.log("currentRotation: " + currentRotation);
-        
-        
-        // first check direction / negative or positive
-        // Will need to buffer numbers somewhat.
-        
-        // if (rotation < -180) { 
-        //     rotation += 360;
-        // }
-        
-        // updateBounds(this.target);
-        
-        // if (rotation < 12 && rotation > -12 && !animation.isActive()) {
-        //   animation.restart();
-        // }
+
     }
     
-    // console.log();
+    initButtons();
     
-    
-    
-    //trigger:"#topBar"
 }

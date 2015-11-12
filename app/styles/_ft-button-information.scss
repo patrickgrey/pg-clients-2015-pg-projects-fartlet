@@ -7,31 +7,34 @@
   
   .ft-button-information {
     display: block;
-    position: absolute;
-    top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
-    right: 8px;
-    font-size: 1.5em;
-    font-weight: bold;
-    background-color: $dark-blue;
-    z-index: 1;
-    transform: rotate(0deg);
-    transition: transform 0.3s ease;
   }
+  
+}
 
-  .ft-button-information-close {
-    background: #FF5722;
-    transform: rotate(180deg);
-  }
+.ft-button-information {
+  position: absolute;
+  top: $ft-title-height - ($ft-buttons-smallest-diameter/2); //65 - 44/2
+  right: 8px;
+  font-size: 1.5em;
+  font-weight: bold;
+  background-color: $dark-blue;
+  z-index: 1;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
 
-  .ft-information {
-    // position: absolute;
-    margin-top: $ft-title-height;
-    color: $dark-blue; 
-    margin: 0;
-    padding-top: $ft-buttons-smallest-diameter/2;
-    background: $shock-yellow;
-    word-wrap: break-word;
-    z-index: 1;
-  }
+.ft-button-information-close {
+  background: #FF5722;
+  transform: rotate(180deg);
+}
 
+.ft-information {
+  // position: absolute;
+  margin-top: $ft-title-height;
+  color: $dark-blue; 
+  margin: 0;
+  padding-top: $ft-buttons-smallest-diameter/2;
+  background: $shock-yellow;
+  word-wrap: break-word;
+  z-index: 1;
 }

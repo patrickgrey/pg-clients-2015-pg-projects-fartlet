@@ -1,0 +1,22 @@
+/**
+* Player controls
+*/
+
+// Hide native audio player if has js for custom controls
+.js .ft-audio {
+  display: none;
+}
+
+// If JS only is available, show basic buttons
+.js .ft-audio-player-custom-accessible {
+    display: block;
+}
+
+// If JS and inline svg are available, hide basic buttons and show SVG interface
+.js.inlinesvg .ft-audio-player-custom-accessible {
+    display: none;
+}
+
+.js.inlinesvg .ft-audio-player-custom {
+    display: block;
+}

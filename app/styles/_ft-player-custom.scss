@@ -79,6 +79,15 @@
       fill:$dark-blue;
     }
     
+    // .ft-audio-player-custom-btn-play-icon-play {
+    //   opacity:0.1;
+    // }
+    
+    .ft-audio-player-custom-btn-play-icon-pause {
+      fill: $dark-blue;
+      display: none
+    }
+    
     
     // Time button
     
@@ -125,7 +134,7 @@
     // Reset button
     
     .ft-button-reset-svg {
-      display: none;
+      // display: none;
       cursor: pointer;
     }
     
@@ -169,13 +178,13 @@
       // background: red;
     }
     
-    .ft-button-time-svg {
-      width: 65vw;
-      height: 65vw;
-      position: absolute;
-      left: 5vw; // width/2
-      bottom: 20px;
-    }
+    // .ft-button-time-svg {
+    //   width: 65vw;
+    //   height: 65vw;
+    //   position: absolute;
+    //   left: 5vw; // width/2
+    //   bottom: 20px;
+    // }
     
     
     // Reset button
@@ -196,7 +205,7 @@
       // width: 42vw;
       height: 42vw;
       position: absolute;
-      right: 9.2vw; // width/2
+      right: 11.5vw; // width/2
       bottom: 119px;
     }
     

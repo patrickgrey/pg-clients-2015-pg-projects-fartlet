@@ -1,7 +1,9 @@
-module.exports = function () {
+module.exports = function (ftControllerFartletObj) {
     // Draggable.create("#ft-audio-player-custom-btn-time-id", {type: "rotation", trigger: "#ft-audio-player-custom-btn-time-centre-id"});
     // TweenLite.set("#svgRectangle",{svgOrigin:"150 150"});
     // Draggable.create("#svgRectangle", {type: "rotation"});
+    
+    var ftControllerFartletObj = ftControllerFartletObj;
     
     TweenLite.set("#ft-audio-player-custom-btn-time-id",{svgOrigin:"175 175"});
     
@@ -27,11 +29,10 @@ module.exports = function () {
         });
         
         buttonPlay.addEventListener('click', function (e) {
-            console.log('play');
+            ftControllerFartletObj.togglePlay();
         });
         
         setsPlus.addEventListener('click', function (e) {
-            // console.log('plus');
             if (currentSets < 99) {
                 currentSets++;
                 updateSetsInfo();
@@ -39,7 +40,6 @@ module.exports = function () {
         });
         
         setsMinus.addEventListener('click', function (e) {
-            // console.log('plus');
             if (currentSets > 1) {
                 currentSets--;
                 updateSetsInfo();

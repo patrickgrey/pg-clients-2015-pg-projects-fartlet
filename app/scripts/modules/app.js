@@ -18,5 +18,5 @@ var infoButton = require('./ftInfoButton.js'),
 
 var infoButtonElement = infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
 activateAccessibleControls('ft-skip-to-player', 'ft-return-to-svg', 'ft-audio-player-custom', 'ft-audio-player-custom-accessible');
-ftButtons();
-ftControllerFartletObj.playFartlet();
+ftButtons(ftControllerFartletObj);
+// ftControllerFartletObj.playFartlet();

@@ -1,6 +1,9 @@
-.js {
+.js .ft-header {
+    min-height: $ft-title-height;
+}
 
-    .ft-header {
-        min-height: $ft-title-height;
-    }
+.js.inlinesvg .ft-header {
+    background: none;
+    min-height: 0;
+    height: 0;
 }

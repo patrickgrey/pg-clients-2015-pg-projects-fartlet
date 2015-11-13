@@ -20,3 +20,24 @@
 .js.inlinesvg .ft-audio-player-custom {
     display: block;
 }
+
+
+/**
+ * Information button.
+ */
+
+.ft-button-information {
+  display: none;
+}
+
+// Show if no svg for accessible buttons
+// Could use js modernizr object but prefer to keep
+// all showing and hiding in one place.
+.js .ft-button-information {
+    display: block;
+}
+
+// replace button with SVG button
+.js.inlinesvg .ft-button-information {
+    display: none;
+}

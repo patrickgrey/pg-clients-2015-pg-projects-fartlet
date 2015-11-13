@@ -1,7 +1,6 @@
-module.exports = function (skipToPlayer, returnToSVG, customControls, accessibleControls) {
+module.exports = function (skipToPlayer, customControls, accessibleControls) {
     
     var skipToPlayer = document.getElementsByClassName(skipToPlayer)[0];
-    var returnToSVG = document.getElementsByClassName(returnToSVG)[0];
     var customControls = document.getElementsByClassName(customControls)[0];
     var accessibleControls = document.getElementsByClassName(accessibleControls)[0];
     
@@ -10,8 +9,4 @@ module.exports = function (skipToPlayer, returnToSVG, customControls, accessible
         accessibleControls.style.display = 'block';
     }, false);
     
-    returnToSVG.addEventListener('click', function() {
-        customControls.style.display = 'block';
-        accessibleControls.style.display = 'none';
-    }, false);
 }

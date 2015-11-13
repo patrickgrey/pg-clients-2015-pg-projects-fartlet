@@ -1,22 +1,38 @@
 var infoButton = require('./ftInfoButton.js'),
     activateAccessibleControls = require('./ftActivateAccessibleControls.js'),
     ftControllerFartlet = require('./ftControllerFartlet.js'),
-    ftControllerFartletObj = ftControllerFartlet();
     ftButtons = require('./ftButtons.js'),
-    // gsap = require('gsap'),
-    // TweenLite = require('https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TimelineLite.min.js'),
-    // Draggable = require('../../../node_modules/gsap/src/uncompressed/utils/Draggable.js'),
-    // CSSPlugin = require('../../../node_modules/gsap/src/uncompressed/plugins/CSSPlugin.js'),
-    // CSSPlugin = require('./../bower_components/gsap/src/uncompressed/plugins/CSSPlugin.js'),
-    // Draggable = require('./../bower_components/gsap/src/uncompressed/utils/Draggable.js'),
+    ftSVGPosition = require('./ftSVGPosition.js'),
     _ = require('underscore');
     
+var ftControllerFartletObj = ftControllerFartlet(),
+    ftSVGPositionObj = ftSVGPosition(),
+    ftSVGPositionData = 
+    [
+      {   
+        'id':          'ft-audio-svg-title-background',
+        'positioning':  {
+                          'anchorX': ftSVGPositionObj.LEFT,
+                          'anchorY': 'BOTTOM',
+                          'x': '10vw',
+                          'y': '10vh',
+                          'width': '15vw',
+                          'height': '15vw',
+                          'max-width': '100%',
+                          'max-height': '65px'
+                        }
+      }
+    ];
     
-    // TweenLite.to("#ft-audio-player-custom-btn-time-id", 1, {x:100, y:100, scale:0.5, rotation:180, skewX:45});
-    
-
-
-var infoButtonElement = infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
-activateAccessibleControls('ft-skip-to-player', 'ft-return-to-svg', 'ft-audio-player-custom', 'ft-audio-player-custom-accessible');
+infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
+activateAccessibleControls('ft-skip-to-player',  'ft-audio-player-custom', 'ft-audio-player-custom-accessible');
 ftButtons(ftControllerFartletObj);
-// ftControllerFartletObj.playFartlet();
+ftSVGPositionObj.initData(ftSVGPositionData);
+
+
+// Position SVG
+// First get vw and vh
+// Add resize with debounce
+// Check orientation
+// Position and size using GSAP...
+// Use Object to hold ID's and settings

@@ -1,12 +1,15 @@
-var infoButton = require('./ftInfoButton.js'),
+/*var infoButton = require('./ftInfoButton.js'),
     activateAccessibleControls = require('./ftActivateAccessibleControls.js'),
     ftControllerFartlet = require('./ftControllerFartlet.js'),
     ftButtons = require('./ftButtons.js'),
-    ftSVGPosition = require('./ftSVGPosition.js'),
-    _ = require('underscore');
+    ftSVGPosition = require('./ftSVGPosition.js'),*/
+var  _math = require('lodash/Math');
+var  _function = require('lodash/Function');
     
-var ftControllerFartletObj = ftControllerFartlet(),
-    ftSVGPositionObj = ftSVGPosition(),
+var ftSVGPosition = require('./ftSVGPosition.js');
+    
+// var ftControllerFartletObj = ftControllerFartlet(),
+var ftSVGPositionObj = ftSVGPosition(_math, _function),
     ftSVGPositionData = 
     [
       {   
@@ -24,10 +27,10 @@ var ftControllerFartletObj = ftControllerFartlet(),
       }
     ];
     
-infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
-activateAccessibleControls('ft-skip-to-player',  'ft-audio-player-custom', 'ft-audio-player-custom-accessible');
-ftButtons(ftControllerFartletObj);
-ftSVGPositionObj.initData(ftSVGPositionData);
+// infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
+// activateAccessibleControls('ft-skip-to-player',  'ft-audio-player-custom', 'ft-audio-player-custom-accessible');
+// ftButtons(ftControllerFartletObj);
+ftSVGPositionObj.init(ftSVGPositionData);
 
 
 // Position SVG

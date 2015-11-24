@@ -3,13 +3,14 @@
     ftControllerFartlet = require('./ftControllerFartlet.js'),
     ftButtons = require('./ftButtons.js'),
     ftSVGPosition = require('./ftSVGPosition.js'),*/
-var  _math = require('lodash/Math');
-var  _function = require('lodash/Function');
+var  _ = require('underscore');
+// var  _math = require('lodash/Math');
+// var  _function = require('lodash/Function');
     
 var ftSVGPosition = require('./ftSVGPosition.js');
     
 // var ftControllerFartletObj = ftControllerFartlet(),
-var ftSVGPositionObj = ftSVGPosition(_math, _function),
+var ftSVGPositionObj = ftSVGPosition(_),
     ftSVGPositionData = 
     [
       {   

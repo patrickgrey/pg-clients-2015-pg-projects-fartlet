@@ -1,93 +1,263 @@
-module.exports = function (_math, _function) {
-    
-    var obj = {},
-        orientation = 'portrait';
-    
+module.exports = function (_) {
+    // Object returned by module
+    var obj = {};
+    // Static variables
+    obj.PORTRAIT = 'PORTRAIT';
+    obj.LANDSCAPE = 'LANDSCAPE';
     obj.TOP = 'TOP';
     obj.RIGHT = 'RIGHT';
     obj.BOTTOM = 'BOTTOM';
     obj.LEFT = 'LEFT';
     
-    var resizeHandler = _function.debounce(function (e) {
-        scaleElements();
+    
+    // list of buttons and an object holding screen data that is used across several functions.
+    var buttons = [ 'ft-audio-svg-btn-help', 'ft-audio-svg-btn-play', 'ft-audio-svg-btn-time', 
+                    'ft-audio-svg-btn-sets-plus', 'ft-audio-svg-btn-sets-minus', 'ft-audio-svg-btn-sets-info',
+                    'ft-audio-svg-btn-reset', 'ft-audio-svg-btn-time-radius'],
+        screenData = {
+            orientation: obj.PORTRAIT,
+            screenVW: 100,
+            screenVH: 100
+        },
+        originalElementAttributes = {}; //x,y,width,height
+    
+    
+    /**
+     * Handle screen resizes with a debounce delay
+     * @param  {event} e) {                   getScreenSizeAndOrientation();        resizeElements();        repositionElements();    } 
+     * @param  {integer} 50 milliseconds to delay function
+     */
+    var resizeHandler = _.debounce(function (e) {
+        getScreenSizeAndOrientation();
+        resizeElements();
+        repositionElements();
     }, 50);
     
-    var initElements = function () {
-        TweenLite.set("#ft-audio-svg-title-background", {svgOrigin:"0 0", x:0, y:0});
-        // http://stackoverflow.com/questions/6966036/how-can-i-scale-svg-graphics-group-to-desired-sizenot-by-factor
-        // http://jsfiddle.net/luken/4xx9edo2/
-        TweenLite.set("#ft-audio-svg-title", {svgOrigin:"0 0", x:0, y:8});
-        // TweenLite.set("#ft-audio-svg-title", {svgOrigin:"0 0", scale:0.5, x:0, y:5});
-    }
     
-    var scaleElements = function () {
+    /**
+     * Set the SVG origin of elements so they position and scale consistently
+     */
+    var initElements = function () {
         
-        var screenVW = window.screen.width / 100;
-        var screenVH = window.screen.height / 100;
+        TweenLite.set("#ft-audio-svg-title-background", {svgOrigin:"0 0", x:0, y:0});
+        TweenLite.set("#ft-audio-svg-title", {svgOrigin:"0 0", x:0, y:3});
         
-        // Calc orientation
+        for (var i = 0; i < buttons.length; i++) {
+            TweenLite.set('#'+buttons[i], {svgOrigin:"0 0"});
+            
+            // var elementBBox = getBox(buttons[i]);
+            // var convert = makeAbsoluteContext(document.getElementById(buttons[i]), document.getElementById('ft-audio-svg'));
+            // var absoluteTop = convert(elementBBox.x, elementBBox.y);
+            // var elDimms = getDims(buttons[i]);
+            // console.log(elDimms);
+            originalElementAttributes[buttons[i]] = getDims(buttons[i]);
+        }
         
-        // Have two different data sets depending on orientation.
-        scaleElement({
-            elementID: '#ft-audio-svg-title-background',
-            width: (screenVW * 100),
-            height: (screenVW * 15),
-            minHeight: 30,
-            maxHeight: 60
-        }); 
-        // #ft-audio-svg-title-background
-        // var tempHeight = screenVW * 15;
-        // if (tempHeight < 30) {tempHeight = 30};
-        // if (tempHeight > 60) {tempHeight = 60};
-        // TweenLite.set("#ft-audio-svg-title-background", {width:(screenVW * 100), height:tempHeight});
-        // TweenLite.set("#ft-audio-svg-title", {scale:tempHeight/80});
-        // elementID, scaleValue, minW, maxW, minH, maxH
-        // 
-        // #ft-audio-svg-title
-        // Has a max min height same as background - test that from bounding box or height attribute
-        // Otherwise, should just scale relative to width (if portrait)
+        // console.log(originalElementAttributes);
+        
     }
     
     
     /**
-     * [scaleElement scale an individual element.]
-     * @param  {[object]} config [Contains the scaling settings to be used agains the current screen dimensions.]
-     * @return {[object]}        [Return the settings after they have been updated against the screen settings and checked against parameters such as min and max
-     *                                   elementID: CSS ID selector
-     *                                   width: width relative to screen
+     * Update the screen data in module scope object on resize.
+     */
+    var getScreenSizeAndOrientation = function() {
+        screenData.screenVW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 100;
+        screenData.screenVH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 100;
+    };
+    
+    
+    /**
+     * Reposition SVG Elements
+     */
+    var repositionElements = function () {
+        
+        /*for (var i = 0; i < buttons.length; i++) {
+            
+            resetPosition(buttons[i]);
+            
+        };*/
+        
+        var resetObj = getResetPosition(buttons[0]);
+        var helpDims = getDims(buttons[0]);
+        var titleBGDims = getDims('ft-audio-svg-title-background');
+        TweenLite.set('#ft-audio-svg-btn-help', {x:resetObj.x + (screenData.screenVW * 100) - helpDims.width - 20, y:resetObj.y + titleBGDims.height - (helpDims.height / 2) });
+        
+        // Items are being scaled. Therefore, I suspect the x,y coords are changing as it scales.
+        
+        // Need to get current height of title bg to position (and current height?)
+        // Need to reset to 0 0 before using positions relative to other elements?
+        // console.log(.left);
+        /*var svgBBox = getBox('ft-audio-svg');
+        var helpDims = getDims('ft-audio-svg-btn-help');
+        var helpBBox = getBox('ft-audio-svg-btn-help');
+        var titleBGDims = getDims('ft-audio-svg-title-background');
+        
+        var convert = makeAbsoluteContext(document.getElementById('ft-audio-svg-btn-help'), document.getElementById('ft-audio-svg'));
+        console.log(helpDims);
+        var absoluteTop = convert(helpBBox.x, helpBBox.y);*/
+        
+        
+        // Test values as jumping about.
+        // console.log(absoluteTop.y);
+        // console.log(helpBBox.y);
+        // console.log(svgBBox.y);
+        // console.log(titleBGDims.height);
+        // console.log((helpDims.height / 2));
+        // console.log('*********************');
+        // TweenLite.set('#ft-audio-svg-btn-help', {x:0, y:-originalElementAttributes['ft-audio-svg-btn-help'].y });
+        // TweenLite.set("#ft-audio-svg-btn-help", {svgOrigin:"0 0", x:0, y:0 });
+    };
+    
+    var getResetPosition = function(id) {
+        // get original height
+        // get current height
+        // var currentHeight = getDims(id).height;
+        // create scale factor from this
+        var elementDims = getDims(id);
+        var elementOrig = originalElementAttributes[id];
+        var scaleWidthFactor = elementDims.width / elementOrig.width;
+        var scaleHeightFactor = elementDims.height / elementOrig.height;
+        // Get original y
+        // Multiply by scale factor
+        // subtract scaled y.
+        var currentX = elementOrig.left * scaleWidthFactor;
+        var currentY = elementOrig.top * scaleHeightFactor;
+        
+        /*console.log(id);
+        console.log(originalElementAttributes[id].height);
+        console.log(currentHeight);
+        console.log(scaleFactor);
+        console.log(screenData.screenVW);
+        console.log('******************');
+        
+        TweenLite.set('#'+id, {x: -currentX, y:-currentY + (elementDims.height / 2) });*/
+        
+        return {x: -currentX, y:-currentY};
+        
+    };
+    
+    
+    
+    var getDims = function(id) {
+        return document.getElementById(id).getBoundingClientRect();
+    };
+    
+    var getBox = function(id) {
+        return document.getElementById(id).getBBox();
+    };
+    
+    
+    /**
+     * Set up resizing of all elements
+     */
+    var resizeElements = function () {
+        
+        // Calc orientation
+        
+        // Have two different data sets depending on orientation.
+        var bgSettings = resizeElement({
+            elementID: 'ft-audio-svg-title-background',
+            width: (screenData.screenVW * 100),
+            height: (screenData.screenVW * 15),
+            minHeight: 30,
+            maxHeight: 60
+        });
+        
+        resizeElement({
+            elementID: 'ft-audio-svg-title',
+            scale: (bgSettings.height / 70)
+        });
+        
+        for (var i = 0; i < buttons.length; i++) {
+            
+            resizeElement({
+                elementID: buttons[i],
+                scale: (screenData.screenVW * 0.3),
+                minScale: 1,
+                maxScale: 1.3
+            });
+            
+        };
+        
+    }
+    
+    
+    /**
+     * [resizeElement scale and resize an individual element.
+     * Resizing is needed if the item doesn't scale proportionately.
+     * Scaling is used if scales proportionately.]
+     * 
+     * @param  {[object]} config [Contains the scaling settings to be used agains the current screen dimensions.
+     *                               Options:
+     *                                   elementID: CSS ID selector - *required.
+     *                                   width: width relative to screen.
      *                                   minWidth: minimum width - overrides width setting
      *                                   maxWidth: maximum width - overrides width setting
-     *                                   height: height relative to screen
+     *                                   height: height relative to screen..
      *                                   minHeight: minimum height - overrides height setting
      *                                   maxHeight: maximum height - overrides height setting
-     *                           ]
+     *                                   scale: value between 0 & 1.
+     *                                   minScale: minimum scale - overrides scale setting
+     *                                   maxScale: maximum scale - overrides scale setting]
+     *                                   
+     * @return {[object]}        [Return the settings after they have been updated against the screen settings and checked against parameters such as min and max]
      */
-    var scaleElement = function(config) {
+    var resizeElement = function(config) {
         
         // This would have to be calculated depending on orientation?
+        config.width = config.width || -1;
+        config.maxWidth = config.maxWidth || 99999999;
+        config.minWidth = config.minWidth || 0;
+        config.height = config.height || -1;
         config.maxHeight = config.maxHeight || 99999999;
         config.minHeight = config.minHeight || 0;
-        // Check that height is within min and max!
-        // WHAT IF NO MinMaxHEIGHT???
-        config.height = _math.min( [config.maxHeight, _math.max([config.height, config.minHeight]) ]);
+        config.scale = config.scale || 1;
+        config.minScale = config.minScale || config.scale;
+        config.maxScale = config.maxScale || config.scale;
         
-        // if (config.minHeight && config.height < config.minHeight) {config.height = config.minHeight};
-        // if (config.maxHeight && config.height > config.maxHeight) {config.height = config.maxHeight};
+        /*console.log('id: '+config.elementID);
+        console.log('width: '+config.width);
+        console.log('height: '+config.height);
+        console.log('scale: '+config.scale);*/
         
-        TweenLite.set(config.elementID, {scale: config.scale, width:config.width, height:config.height});
+        // Check that width & height is within min and max!
+        config.width = _.min( [config.maxWidth, _.max([config.width, config.minWidth]) ]);
+        config.height = _.min( [config.maxHeight, _.max([config.height, config.minHeight]) ]);
+        config.scale = _.min( [config.maxScale, _.max([config.scale, config.minScale]) ]);
+        
+        TweenLite.set('#'+config.elementID, {scale: config.scale, attr:{width:config.width, height:config.height}});
+        
         return config;
     };
     
+    /**
+     * UTILITY FUNCTIONS
+     */
+    
+    
+    function makeAbsoluteContext(element, svgDocument) {
+      return function(x,y) {
+        var offset = svgDocument.getBoundingClientRect();
+        var matrix = element.getScreenCTM();
+        return {
+          x: (matrix.a * x) + (matrix.c * y) + matrix.e - offset.left,
+          y: (matrix.b * x) + (matrix.d * y) + matrix.f - offset.top
+        };
+      };
+    }
+    
+    
+    // Start positioning elements once page has loaded.
     obj.init = function (ftSVGPositionData) {
         
         var ftSVGPositionData = ftSVGPositionData || {};
+        getScreenSizeAndOrientation();
         initElements();
-        scaleElements();
+        resizeElements();
+        repositionElements();
         
         window.addEventListener("resize", resizeHandler, false);
-        
-        
-        
     };
     
     return obj;

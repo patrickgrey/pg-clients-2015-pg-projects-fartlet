@@ -53,6 +53,8 @@
           
           <div class="ft-audio-player-custom">
           
+            <!-- !!! Can't use stroked as borders as can't reliably / easily be calculated cross-browser -->
+          
             <svg id="ft-audio-svg" version="1.1" x="0px" y="0px">
             
               <style type="text/css">
@@ -71,47 +73,46 @@
                 .st12{fill:#E83131;stroke:#FFFFFF;stroke-width:6;stroke-miterlimit:10;}
                 .st13{fill:none;stroke:#FFFFFF;stroke-width:5;stroke-miterlimit:10;}
                 .st14{fill:#FFFF00;}
-                .st15{fill:#085390;stroke:#FFFF00;stroke-width:6;stroke-miterlimit:10;}
+                .st15{fill:#085390;}
+                .st15b{fill:#FFFF00;}
                 .st16{font-family:'Arial';}
                 .st17{font-size:30px;}
               </style>
               <!-- <g id="Layer_1">
                 <rect x="-0.9" y="0" class="st0" width="344.3" height="567"/>
               </g> -->
-              <g id="btn-play-container">
-                <g id="btn-play">
+              <g id="ft-audio-svg-btn-play">
                   <circle id="btn-play-centre" class="st1" cx="146.5" cy="366.5" r="78.4"/>
                   <rect x="89.6" y="344.9" class="st2" width="113.8" height="48.5"/>
                   <text transform="matrix(1 0 0 1 103.7876 381.5578)" class="st3 st4 st5">999</text>
                   <polygon id="icon-play" class="st6" points="137.4,413.6 137.3,400.4 148.4,406.9 159.7,413.4 148.6,420.1 137.5,426.8     "/>
-                </g>
               </g>
-              <g id="Layer_6">
+              <g id="ft-audio-svg-btn-time-radius">
                 <circle id="btn-play-centre_2_" class="st7" cx="146.2" cy="366.4" r="108.8"/>
               </g>
-              <g id="Layer_7">
+              <g id="ft-audio-svg-btn-time">
                 <circle id="btn-time-centre" class="st8" cx="90.5" cy="420.9" r="27.8"/>
-                <g id="btn-time-arrows">
-                  <polygon class="st9" points="85.4,426.1 89,428.7 85,430.5 81,432.2 81.4,427.9 81.8,423.5    "/>
-                  <polygon class="st9" points="94.9,409.3 99,407.7 98.3,412 97.6,416.3 94.2,413.7 90.7,411    "/>
-                </g>
+                <polygon class="st9" points="85.4,426.1 89,428.7 85,430.5 81,432.2 81.4,427.9 81.8,423.5    "/>
+                <polygon class="st9" points="94.9,409.3 99,407.7 98.3,412 97.6,416.3 94.2,413.7 90.7,411    "/>
               </g>
-              <g id="btn-sets-container">
-                <g id="btn-plus_1_">
-                  <circle id="btn-plus-centre_1_" class="st10" cx="188" cy="232.1" r="27.8"/>
-                  <path id="plus_1_" class="st9" d="M186.1,239.4v-5.7h-5.8v-3.9h5.8V224h3.8v5.7h5.8v3.9h-5.8v5.7H186.1z"/>
-                </g>
-                <g id="btn-minus_1_">
-                  <circle id="btn-minus-centre_1_" class="st10" cx="249" cy="270.5" r="27.8"/>
-                  <path id="minus_1_" class="st9" d="M241.4,268.1h15.4v3.9h-15.4"/>
-                </g>
-                <g id="info-sets_2_">
-                  <circle id="info-sets_3_" class="st9" cx="241.4" cy="213.9" r="32"/>
-                  <rect x="213.8" y="204.7" class="st2" width="56.5" height="25.7"/>
-                  <text transform="matrix(1 0 0 1 220.6836 223.0498)" class="st3 st4 st11">999</text>
-                </g>
+              
+              <g id="ft-audio-svg-btn-sets-plus">
+                <circle id="btn-plus-centre_1_" class="st10" cx="188" cy="232.1" r="27.8"/>
+                <path id="plus_1_" class="st9" d="M186.1,239.4v-5.7h-5.8v-3.9h5.8V224h3.8v5.7h5.8v3.9h-5.8v5.7H186.1z"/>
               </g>
-              <g id="btn-reset-container_1_">
+              
+              <g id="ft-audio-svg-btn-sets-minus">
+                <circle id="btn-minus-centre_1_" class="st10" cx="249" cy="270.5" r="27.8"/>
+                <path id="minus_1_" class="st9" d="M241.4,268.1h15.4v3.9h-15.4"/>
+              </g>
+              
+              <g id="ft-audio-svg-btn-sets-info">
+                <circle id="info-sets_3_" class="st9" cx="241.4" cy="213.9" r="32"/>
+                <rect x="213.8" y="204.7" class="st2" width="56.5" height="25.7"/>
+                <text transform="matrix(1 0 0 1 220.6836 223.0498)" class="st3 st4 st11">999</text>
+              </g>
+              
+              <g id="ft-audio-svg-btn-reset">
                 <circle id="btn-reset-centre" class="st12" cx="296.5" cy="366.5" r="27.8"/>
                 <path class="st13" d="M307.9,366.9c0,6.4-5.2,11.5-11.5,11.5c-6.4,0-11.5-5.2-11.5-11.5c0-6.4,5.2-11.5,11.5-11.5"/>
                 <polygon id="icon-reset" class="st9" points="296.1,355.7 296,350.8 300.2,353.2 304.4,355.6 300.2,358.1 296.1,360.6  "/>
@@ -193,12 +194,16 @@
                     c-0.1-0.4-0.2-0.9-0.3-1.3c2.9-0.3,5.7-0.8,8.6-1.1c0.2,0,0.3-0.3,0.3-0.4c0-0.1-0.1-0.1-0.1-0.2c-0.1-0.1-0.3-0.1-0.5-0.1
                     C52.9,32.1,51.3,32.2,49.7,32.3z"/>
                 </g>
+                
+              </g> <!-- ft-audio-svg-title -->
+              
+              <g id="ft-audio-svg-btn-help">
+                <circle id="ft-audio-svg-btn-help-border" class="st15b" cx="296.5" cy="61.5" r="34"/>
+                <circle id="ft-audio-svg-btn-help-centre" class="st15" cx="296.5" cy="61.5" r="28"/>
+                <!-- <rect x="267.8" y="49.7" class="st2" width="56.5" height="25.7"/> -->
+                <text transform="matrix(1 0 0 1 289 71.2002)" class="st9 st16 st17">?</text>
               </g>
-              <g id="btn-help-container">
-                <circle id="btn-reset-centre_1_" class="st15" cx="296.5" cy="61.5" r="27.8"/>
-                <rect x="267.8" y="49.7" class="st2" width="56.5" height="25.7"/>
-                <text transform="matrix(1 0 0 1 286.8775 71.2002)" class="st9 st16 st17">?</text>
-              </g>
+              
             </svg>
           
           </div>

@@ -108,7 +108,8 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   browserSync({
     open: false,
     notify: false,
-    reloadDebounce: 2000,
+    // reloadDebounce: 2000,
+    reloadDelay: 500,
     // host: "192.168.1.71",
     port: 9000,
     server: {
@@ -124,13 +125,13 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
     // 'app/scripts/**/*.js',
     '.tmp/scripts/**/*.js',
     'app/images/**/*',
-    '.tmp/fonts/**/*'
+    //'.tmp/fonts/**/*'
   ]).on('change', reload);
 
   gulp.watch('app/styles/**/*.scss', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch('app/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+  // gulp.watch('app/fonts/**/*', ['fonts']);
+  // gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
 gulp.task('serve:dist', () => {
@@ -159,7 +160,7 @@ gulp.task('serve:test', () => {
     }
   });
 
-  gulp.watch('test/spec/**/*.js').on('change', reload);
+  // gulp.watch('test/spec/**/*.js').on('change', reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 

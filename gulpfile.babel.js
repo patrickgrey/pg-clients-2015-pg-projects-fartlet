@@ -106,7 +106,9 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   browserSync({
+    open: false,
     notify: false,
+    reloadDebounce: 2000,
     // host: "192.168.1.71",
     port: 9000,
     server: {
@@ -119,7 +121,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 
   gulp.watch([
     'app/*.html',
-    'app/scripts/**/*.js',
+    // 'app/scripts/**/*.js',
     '.tmp/scripts/**/*.js',
     'app/images/**/*',
     '.tmp/fonts/**/*'

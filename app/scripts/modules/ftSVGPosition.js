@@ -48,6 +48,20 @@ module.exports = function (_math, _function) {
         // Otherwise, should just scale relative to width (if portrait)
     }
     
+    
+    /**
+     * [scaleElement scale an individual element.]
+     * @param  {[object]} config [Contains the scaling settings to be used agains the current screen dimensions.]
+     * @return {[object]}        [Return the settings after they have been updated against the screen settings and checked against parameters such as min and max
+     *                                   elementID: CSS ID selector
+     *                                   width: width relative to screen
+     *                                   minWidth: minimum width - overrides width setting
+     *                                   maxWidth: maximum width - overrides width setting
+     *                                   height: height relative to screen
+     *                                   minHeight: minimum height - overrides height setting
+     *                                   maxHeight: maximum height - overrides height setting
+     *                           ]
+     */
     var scaleElement = function(config) {
         
         // This would have to be calculated depending on orientation?

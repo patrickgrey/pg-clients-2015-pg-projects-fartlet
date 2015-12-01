@@ -13,7 +13,9 @@ module.exports = function (_) {
     // list of buttons and an object holding screen data that is used across several functions.
     var buttons = [ 'ft-audio-svg-btn-help', 'ft-audio-svg-btn-play', 'ft-audio-svg-btn-time', 
                     'ft-audio-svg-btn-sets-plus', 'ft-audio-svg-btn-sets-minus', 'ft-audio-svg-btn-sets-info',
-                    'ft-audio-svg-btn-reset', 'ft-audio-svg-btn-time-radius', 'ft-audio-svg-btn-time-radius'],
+                    'ft-audio-svg-btn-reset', 
+                    // , 'ft-audio-svg-btn-time-radius'
+                    ],
         screenData = {
             orientation: obj.PORTRAIT,
             screenVW: 100,
@@ -41,12 +43,12 @@ module.exports = function (_) {
         
         TweenLite.set("#ft-audio-svg-title-background", {svgOrigin:"0 0", x:0, y:0});
         TweenLite.set("#ft-audio-svg-title", {svgOrigin:"0 0", x:0, y:3});
+        TweenLite.set('#ft-audio-svg-btn-time', {rotation: 100, transformOrigin:"50% 50%" });
         
         for (var i = 0; i < buttons.length; i++) {
             TweenLite.set('#'+buttons[i], {svgOrigin:"0 0"});
             originalElementAttributes[buttons[i]] = getDims(buttons[i]);
         }
-        
     }
     
     
@@ -66,26 +68,34 @@ module.exports = function (_) {
         
         var resetObj = getResetPositions();
         
-        var helpDims = getDims('ft-audio-svg-btn-help');
         var titleBGDims = getDims('ft-audio-svg-title-background');
+        
+        var helpDims = getDims('ft-audio-svg-btn-help');
         var helpReset = resetObj['ft-audio-svg-btn-help'];
-        TweenLite.set('#ft-audio-svg-btn-help', {x:helpReset.x + (screenData.screenVW * 100) - helpDims.width - 20, y:helpReset.y + titleBGDims.height - (helpDims.height / 2) });
+        setPosition('ft-audio-svg-btn-help', resetObj, {x:helpReset.x + (screenData.screenVW * 100) - helpDims.width - 20, y:helpReset.y + titleBGDims.height - (helpDims.height / 2) });
         
         var playDims = getDims('ft-audio-svg-btn-play');
         var playReset = resetObj['ft-audio-svg-btn-play'];
-        TweenLite.set('#ft-audio-svg-btn-play', {x:playReset.x + (screenData.screenVW * 20), y:playReset.y + (screenData.screenVH * 100) - playDims.height - (screenData.screenVH * 9) });
+        var playPositions = {x:playReset.x + (screenData.screenVW * 100) - (helpDims.width * 4), y:playReset.y + (screenData.screenVH * 100) - playDims.height - 50 };
         
-        var timeDims = getDims('ft-audio-svg-btn-time');
-        var timeReset = resetObj['ft-audio-svg-btn-time'];
-        TweenLite.set('#ft-audio-svg-btn-time', {x:timeReset.x + (screenData.screenVW * 20), y:timeReset.y + (screenData.screenVH * 100) - timeDims.height - (screenData.screenVH * 9) });
+        setPosition('ft-audio-svg-btn-play', resetObj, playPositions);
+        setPosition('ft-audio-svg-btn-time', resetObj, playPositions);
         
         var resetDims = getDims('ft-audio-svg-btn-reset');
         var resetReset = resetObj['ft-audio-svg-btn-reset'];
-        TweenLite.set('#ft-audio-svg-btn-reset', {x:resetReset.x + (screenData.screenVW * 70), y:resetReset.y + (screenData.screenVH * 100) - resetDims.height - (screenData.screenVH * 6) });
+        setPosition('ft-audio-svg-btn-reset', resetObj, playPositions);
         
-        var timeRadiusDims = getDims('ft-audio-svg-btn-time-radius');
-        var timeRadiusReset = resetObj['ft-audio-svg-btn-time-radius'];
-        TweenLite.set('#ft-audio-svg-btn-time-radius', {x:timeRadiusReset.x + (screenData.screenVW * 12), y:timeRadiusReset.y + (screenData.screenVH * 100) - timeRadiusDims.height - (screenData.screenVH * 4) });
+        setPosition('ft-audio-svg-btn-sets-plus', resetObj, playPositions);
+        setPosition('ft-audio-svg-btn-sets-minus', resetObj, playPositions);
+        setPosition('ft-audio-svg-btn-sets-info', resetObj, playPositions);
+        // setPosition('ft-audio-svg-btn-time-radius', resetObj, playPositions);
+        
+    };
+    
+    var setPosition = function(id, resetObj, positions) {
+        var helpDims = getDims(id);
+        var helpReset = resetObj[id];
+        TweenLite.set('#'+id, positions);
     };
     
     var getResetPositions = function() {
@@ -124,9 +134,9 @@ module.exports = function (_) {
         return document.getElementById(id).getBoundingClientRect();
     };
     
-    var getBox = function(id) {
+    /*var getBox = function(id) {
         return document.getElementById(id).getBBox();
-    };
+    };*/
     
     
     /**
@@ -155,7 +165,7 @@ module.exports = function (_) {
             resizeElement({
                 elementID: buttons[i],
                 scale: (screenData.screenVW * 0.3),
-                minScale: 1,
+                minScale: 0.5,
                 maxScale: 1.3
             });
             

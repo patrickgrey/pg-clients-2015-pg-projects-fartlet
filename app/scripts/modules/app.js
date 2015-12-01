@@ -3,13 +3,15 @@
     ftControllerFartlet = require('./ftControllerFartlet.js'),
     ftButtons = require('./ftButtons.js'),
     ftSVGPosition = require('./ftSVGPosition.js'),*/
+var  ftControllerFartlet = require('./ftControllerFartlet.js');
+var  ftButtons = require('./ftButtons.js');
 var  _ = require('underscore');
 // var  _math = require('lodash/Math');
 // var  _function = require('lodash/Function');
     
 var ftSVGPosition = require('./ftSVGPosition.js');
     
-// var ftControllerFartletObj = ftControllerFartlet(),
+var ftControllerFartletObj = ftControllerFartlet();
 var ftSVGPositionObj = ftSVGPosition(_),
     ftSVGPositionData = 
     [
@@ -30,7 +32,7 @@ var ftSVGPositionObj = ftSVGPosition(_),
     
 // infoButton('ft-wrapper-id', 'ft-content-id', 'ft-information-id');
 // activateAccessibleControls('ft-skip-to-player',  'ft-audio-player-custom', 'ft-audio-player-custom-accessible');
-// ftButtons(ftControllerFartletObj);
+ftButtons(ftControllerFartletObj);
 ftSVGPositionObj.init(ftSVGPositionData);
 
 

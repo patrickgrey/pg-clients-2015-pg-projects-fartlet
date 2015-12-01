@@ -1,7 +1,7 @@
 module.exports = function () {
     
     var obj = {};
-    var timeButton = document.getElementById('ft-audio-player-custom-btn-time-id');
+    /*var timeButton = document.getElementById('ft-audio-svg-btn-time');
     var playCircle = document.getElementById('ft-audio-player-custom-btn-play-centre-id');
     var timeButtonText = document.getElementById('ft-audio-player-custom-btn-play-text-inner-id');
     var timeButtonIconPlay = document.getElementById('ft-audio-player-custom-btn-play-icon-play-id');
@@ -11,14 +11,14 @@ module.exports = function () {
     var setButtonMinus = document.getElementById('ft-button-sets-info-minus-id');
     var setInfo = document.getElementById('ft-button-sets-info-id');
     var setsText = document.getElementById('ft-audio-player-custom-btn-time-id');
-    var resetButton = document.getElementById('ft-button-reset-svg-id');
+    var resetButton = document.getElementById('ft-button-reset-svg-id');*/
     
     var setsTotal;
     
     obj.togglePlay = function () {
         console.log('play fartlet2');
         
-        if (timeButtonIconPlay.style.display === 'none') {
+        /*if (timeButtonIconPlay.style.display === 'none') {
             timeButtonIconPlay.style.display = 'block';
             timeButtonIconPause.style.display = 'none';
             timeButton.style.display = 'block';
@@ -37,7 +37,7 @@ module.exports = function () {
             resetButton.style.display = 'none';
             playCircle.style.fill = '#ff0';
             TweenLite.to(setInfo, 1, {x:-200, y:-200});
-        }
+        }*/
     }
     
     // All elements need to be in one SVG to avoid overlaps etc.

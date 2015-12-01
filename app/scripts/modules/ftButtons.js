@@ -5,23 +5,23 @@ module.exports = function (ftControllerFartletObj) {
     
     var ftControllerFartletObj = ftControllerFartletObj;
     
-    TweenLite.set("#ft-audio-player-custom-btn-time-id",{svgOrigin:"175 175"});
-    
     var fartletTime = 30,
         currentRotation = 0,
         stepLimit = 4,
         stepCount = 0,
         minimumSeconds = 3,
         currentSets = 10;
-        buttonPlay = document.getElementById('ft-audio-player-custom-btn-play-hit-id'),
-        timeText = document.getElementById('ft-audio-player-custom-btn-play-text-inner-id'),
-        setsText = document.getElementById('ft-button-sets-text-inner-id'),
-        setsPlus = document.getElementById('ft-button-sets-info-plus-id'),
-        setsMinus = document.getElementById('ft-button-sets-info-minus-id');
+        buttonPlay = document.getElementById('ft-audio-svg-btn-play-hit'),
+        timeText = document.getElementById('ft-audio-svg-btn-play-text'),
+        setsText = document.getElementById('ft-audio-svg-btn-sets-info-text'),
+        setsPlus = document.getElementById('ft-audio-svg-btn-sets-plus'),
+        setsMinus = document.getElementById('ft-audio-svg-btn-sets-minus');
     
     var initButtons = function () {
         
-        Draggable.create("#ft-audio-player-custom-btn-time-id", {
+        TweenLite.set("#ft-audio-svg-btn-time-inner",{svgOrigin:"30 372"});
+        
+        Draggable.create("#ft-audio-svg-btn-time-inner", {
             type:"rotation",
             throwProps:true,
             onDrag: updateTime,

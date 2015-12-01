@@ -11,7 +11,8 @@ module.exports = function (_) {
     
     
     // list of buttons and an object holding screen data that is used across several functions.
-    var buttons = [ 'ft-audio-svg-btn-help', 'ft-audio-svg-btn-play', 'ft-audio-svg-btn-time', 
+    var buttons = [ 'ft-audio-svg-btn-help', 'ft-audio-svg-btn-play', 
+                    'ft-audio-svg-btn-time', 
                     'ft-audio-svg-btn-sets-plus', 'ft-audio-svg-btn-sets-minus', 'ft-audio-svg-btn-sets-info',
                     'ft-audio-svg-btn-reset', 
                     // , 'ft-audio-svg-btn-time-radius'

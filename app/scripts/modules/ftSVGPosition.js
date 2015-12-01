@@ -135,9 +135,10 @@ module.exports = function (_) {
         return document.getElementById(id).getBoundingClientRect();
     };
     
-    /*var getBox = function(id) {
-        return document.getElementById(id).getBBox();
-    };*/
+    obj.getCurrentPosition = function(id) {
+        // return document.getElementById(id).getBBox();
+        return document.getElementById(id)._gsTransform;
+    };
     
     
     /**

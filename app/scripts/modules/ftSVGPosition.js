@@ -13,7 +13,7 @@ module.exports = function (_) {
     // list of buttons and an object holding screen data that is used across several functions.
     var buttons = [ 'ft-audio-svg-btn-help', 'ft-audio-svg-btn-play', 'ft-audio-svg-btn-time', 
                     'ft-audio-svg-btn-sets-plus', 'ft-audio-svg-btn-sets-minus', 'ft-audio-svg-btn-sets-info',
-                    'ft-audio-svg-btn-reset', 'ft-audio-svg-btn-time-radius'],
+                    'ft-audio-svg-btn-reset', 'ft-audio-svg-btn-time-radius', 'ft-audio-svg-btn-time-radius'],
         screenData = {
             orientation: obj.PORTRAIT,
             screenVW: 100,
@@ -44,16 +44,8 @@ module.exports = function (_) {
         
         for (var i = 0; i < buttons.length; i++) {
             TweenLite.set('#'+buttons[i], {svgOrigin:"0 0"});
-            
-            // var elementBBox = getBox(buttons[i]);
-            // var convert = makeAbsoluteContext(document.getElementById(buttons[i]), document.getElementById('ft-audio-svg'));
-            // var absoluteTop = convert(elementBBox.x, elementBBox.y);
-            // var elDimms = getDims(buttons[i]);
-            // console.log(elDimms);
             originalElementAttributes[buttons[i]] = getDims(buttons[i]);
         }
-        
-        // console.log(originalElementAttributes);
         
     }
     
@@ -72,68 +64,57 @@ module.exports = function (_) {
      */
     var repositionElements = function () {
         
-        /*for (var i = 0; i < buttons.length; i++) {
-            
-            resetPosition(buttons[i]);
-            
-        };*/
+        var resetObj = getResetPositions();
         
-        var resetObj = getResetPosition(buttons[0]);
-        var helpDims = getDims(buttons[0]);
-        var titleBGDims = getDims('ft-audio-svg-title-background');
-        TweenLite.set('#ft-audio-svg-btn-help', {x:resetObj.x + (screenData.screenVW * 100) - helpDims.width - 20, y:resetObj.y + titleBGDims.height - (helpDims.height / 2) });
-        
-        // Items are being scaled. Therefore, I suspect the x,y coords are changing as it scales.
-        
-        // Need to get current height of title bg to position (and current height?)
-        // Need to reset to 0 0 before using positions relative to other elements?
-        // console.log(.left);
-        /*var svgBBox = getBox('ft-audio-svg');
         var helpDims = getDims('ft-audio-svg-btn-help');
-        var helpBBox = getBox('ft-audio-svg-btn-help');
         var titleBGDims = getDims('ft-audio-svg-title-background');
+        var helpReset = resetObj['ft-audio-svg-btn-help'];
+        TweenLite.set('#ft-audio-svg-btn-help', {x:helpReset.x + (screenData.screenVW * 100) - helpDims.width - 20, y:helpReset.y + titleBGDims.height - (helpDims.height / 2) });
         
-        var convert = makeAbsoluteContext(document.getElementById('ft-audio-svg-btn-help'), document.getElementById('ft-audio-svg'));
-        console.log(helpDims);
-        var absoluteTop = convert(helpBBox.x, helpBBox.y);*/
+        var playDims = getDims('ft-audio-svg-btn-play');
+        var playReset = resetObj['ft-audio-svg-btn-play'];
+        TweenLite.set('#ft-audio-svg-btn-play', {x:playReset.x + (screenData.screenVW * 20), y:playReset.y + (screenData.screenVH * 100) - playDims.height - (screenData.screenVH * 9) });
         
+        var timeDims = getDims('ft-audio-svg-btn-time');
+        var timeReset = resetObj['ft-audio-svg-btn-time'];
+        TweenLite.set('#ft-audio-svg-btn-time', {x:timeReset.x + (screenData.screenVW * 20), y:timeReset.y + (screenData.screenVH * 100) - timeDims.height - (screenData.screenVH * 9) });
         
-        // Test values as jumping about.
-        // console.log(absoluteTop.y);
-        // console.log(helpBBox.y);
-        // console.log(svgBBox.y);
-        // console.log(titleBGDims.height);
-        // console.log((helpDims.height / 2));
-        // console.log('*********************');
-        // TweenLite.set('#ft-audio-svg-btn-help', {x:0, y:-originalElementAttributes['ft-audio-svg-btn-help'].y });
-        // TweenLite.set("#ft-audio-svg-btn-help", {svgOrigin:"0 0", x:0, y:0 });
+        var resetDims = getDims('ft-audio-svg-btn-reset');
+        var resetReset = resetObj['ft-audio-svg-btn-reset'];
+        TweenLite.set('#ft-audio-svg-btn-reset', {x:resetReset.x + (screenData.screenVW * 70), y:resetReset.y + (screenData.screenVH * 100) - resetDims.height - (screenData.screenVH * 6) });
+        
+        var timeRadiusDims = getDims('ft-audio-svg-btn-time-radius');
+        var timeRadiusReset = resetObj['ft-audio-svg-btn-time-radius'];
+        TweenLite.set('#ft-audio-svg-btn-time-radius', {x:timeRadiusReset.x + (screenData.screenVW * 12), y:timeRadiusReset.y + (screenData.screenVH * 100) - timeRadiusDims.height - (screenData.screenVH * 4) });
     };
     
-    var getResetPosition = function(id) {
+    var getResetPositions = function() {
         // get original height
         // get current height
         // var currentHeight = getDims(id).height;
         // create scale factor from this
-        var elementDims = getDims(id);
-        var elementOrig = originalElementAttributes[id];
-        var scaleWidthFactor = elementDims.width / elementOrig.width;
-        var scaleHeightFactor = elementDims.height / elementOrig.height;
         // Get original y
         // Multiply by scale factor
         // subtract scaled y.
-        var currentX = elementOrig.left * scaleWidthFactor;
-        var currentY = elementOrig.top * scaleHeightFactor;
         
-        /*console.log(id);
-        console.log(originalElementAttributes[id].height);
-        console.log(currentHeight);
-        console.log(scaleFactor);
-        console.log(screenData.screenVW);
-        console.log('******************');
+        var resetObject = {},
+            elementDims,
+            elementOrig,
+            scaleWidthFactor,
+            scaleHeightFactor,
+            currentX,
+            currentY;
         
-        TweenLite.set('#'+id, {x: -currentX, y:-currentY + (elementDims.height / 2) });*/
-        
-        return {x: -currentX, y:-currentY};
+        for (var i = 0; i < buttons.length; i++) {
+            elementDims = getDims(buttons[i]);
+            elementOrig = originalElementAttributes[buttons[i]];
+            scaleWidthFactor = elementDims.width / elementOrig.width;
+            scaleHeightFactor = elementDims.height / elementOrig.height;
+            currentX = elementOrig.left * scaleWidthFactor;
+            currentY = elementOrig.top * scaleHeightFactor;
+            resetObject[buttons[i]] = {x: -currentX, y: -currentY};
+        };
+        return resetObject;
         
     };
     

@@ -61,7 +61,7 @@
                 .st0{fill:#333333;}
                 .st1{fill:#8BC34A;stroke:#FFFFFF;stroke-width:8;stroke-miterlimit:10;}
                 .st2{fill:none;}
-                .st3{fill:#26292C;}
+                .st3{fill:#085390; font-weight: bold;}
                 .st4{font-family:'Arial';}
                 .st5{font-size:51.2px;}
                 .st6{fill:#085390;}
@@ -92,12 +92,16 @@
               </g> -->
               <g id="ft-audio-svg-btn-play">
                   <circle id="ft-audio-svg-btn-play-centre" class="st1" cx="146.5" cy="366.5" r="78.4"/>
-                  <rect x="89.6" y="344.9" class="st2" width="113.8" height="48.5"/>
-                  <text transform="matrix(1 0 0 1 103.7876 371.5578)" class="st3 st4 st5"><tspan id="ft-audio-svg-btn-play-text" x="45" text-anchor="middle">30</tspan></text>
-                  <polygon id="ft-audio-svg-btn-play-icon-play" class="st6" points="137.4,403.6 137.3,390.4 148.4,396.9 159.7,403.4 148.6,410.1 137.5,416.8     "/>
+                  <!-- <rect x="89.6" y="344.9" class="st2" width="113.8" height="48.5"/> -->
+                  <text transform="matrix(1 0 0 1 103.7876 371.5578)" class="st3 st4 st5"><tspan id="ft-audio-svg-btn-play-text" x="44" text-anchor="middle">30</tspan></text>
+                  <!-- <polygon id="ft-audio-svg-btn-play-icon-play" class="st6" points="137 , 390 137, 390 159,  400 137, 416"/> -->
+                  <!-- <polygon id="ft-audio-svg-btn-play-icon-play" class="st6" points="0 0, 25 15, 0 30, 0 0"/> -->
+                  <polygon id="ft-audio-svg-btn-play-icon-play" class="st6" points="136 390, 161 405, 136 420, 136 390"/>
+                  
+                  
                   <g id="ft-audio-player-custom-btn-play-icon-pause" class="st6b">
-                    <rect x="130" y="395" width="12" height="30"/>
-                    <rect x="150" y="395" width="12" height="30"/>
+                    <rect x="130" y="390" width="12" height="30"/>
+                    <rect x="150" y="390" width="12" height="30"/>
                   </g>
                   <circle id="ft-audio-svg-btn-play-hit" class="st1 ft-audio-player-custom-btn-play-hit" cx="146.5" cy="366.5" r="78.4"/>
                   
@@ -341,10 +345,12 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/gsap/src/minified/TweenLite.min.js"></script>
+    <script src="/bower_components/gsap/src/minified/TimelineLite.min.js"></script>
     <script src="/bower_components/gsap/src/minified/utils/Draggable.min.js"></script>
     <script src="/bower_components/gsap/src/minified/plugins/CSSPlugin.min.js"></script>
     <script src="/bower_components/gsap/src/minified/plugins/AttrPlugin.min.js"></script>
     <script src="/bower_components/gsap/src/minified/plugins/ThrowPropsPlugin.min.js"></script>
+    <script src="/bower_components/gsap/src/minified/easing/EasePack.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

@@ -7,7 +7,7 @@ var  _ = require('underscore');
 var ftSVGPosition = require('./ftSVGPosition.js');
     
 var ftSVGPositionObj = ftSVGPosition(_);
-var ftControllerFartletObj = ftControllerFartlet(ftSVGPositionObj);
+var ftControllerFartletObj = ftControllerFartlet(ftSVGPositionObj, _);
 
 ftButtons(ftControllerFartletObj);
 

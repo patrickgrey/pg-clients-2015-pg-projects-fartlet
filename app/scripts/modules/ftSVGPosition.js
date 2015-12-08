@@ -1,6 +1,17 @@
 module.exports = function (_) {
+    
+    /**
+     * 
+     * 
+     * VARIABLES
+     * 
+     * 
+     */
+    
     // Object returned by module
     var obj = {};
+    // let controller know screen has been resized
+    var controllerResizeEvent = new Event('controllerResize');
     // Static variables
     obj.PORTRAIT = 'PORTRAIT';
     obj.LANDSCAPE = 'LANDSCAPE';
@@ -25,16 +36,27 @@ module.exports = function (_) {
         originalElementAttributes = {}; //x,y,width,height
     
     
+    
     /**
-     * Handle screen resizes with a debounce delay
-     * @param  {event} e) {                   getScreenSizeAndOrientation();        resizeElements();        repositionElements();    } 
-     * @param  {integer} 50 milliseconds to delay function
+     * 
+     * 
+     * METHODS
+     * 
+     * 
      */
-    var resizeHandler = _.debounce(function (e) {
-        getScreenSizeAndOrientation();
-        resizeElements();
-        repositionElements();
-    }, 50);
+    
+    /**
+     * Start positioning elements once page has loaded.
+     */
+    obj.init = function (ftSVGPositionData) {
+        
+        var ftSVGPositionData = ftSVGPositionData || {};
+        
+        initElements();
+        resizeHandler();
+        
+        window.addEventListener("resize", resizeHandler, false);
+    };
     
     
     /**
@@ -48,41 +70,52 @@ module.exports = function (_) {
         
         for (var i = 0; i < buttons.length; i++) {
             TweenLite.set('#'+buttons[i], {svgOrigin:"0 0"});
-            originalElementAttributes[buttons[i]] = getDims(buttons[i]);
+            originalElementAttributes[buttons[i]] = obj.getDims(buttons[i]);
         }
-    }
-    
-    
-    /**
-     * Update the screen data in module scope object on resize.
-     */
-    var getScreenSizeAndOrientation = function() {
-        screenData.screenVW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 100;
-        screenData.screenVH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 100;
     };
     
     
     /**
+     * Handle screen resizes with a debounce delay
+     * @param  {event} e) {                   getScreenSizeAndOrientation();        resizeElements();        repositionElements();    } 
+     * @param  {integer} 50 milliseconds to delay function
+     */
+    var resizeHandler = _.debounce(function (e) {
+        
+        getScreenSizeAndOrientation();
+        resizeElements();
+        repositionElements();
+        
+        window.dispatchEvent(controllerResizeEvent);
+        
+    }, 5);
+    
+    
+    
+    //  POSITIONING
+    
+    /**
      * Reposition SVG Elements
+     * THIS IS WHERE MEDIA QUERY STYLE CHOOSING WOULD WORK...
      */
     var repositionElements = function () {
         
-        var resetObj = getResetPositions();
+        var resetObj = getResetPositions(buttons);
         
-        var titleBGDims = getDims('ft-audio-svg-title-background');
+        var titleBGDims = obj.getDims('ft-audio-svg-title-background');
         
-        var helpDims = getDims('ft-audio-svg-btn-help');
+        var helpDims = obj.getDims('ft-audio-svg-btn-help');
         var helpReset = resetObj['ft-audio-svg-btn-help'];
         setPosition('ft-audio-svg-btn-help', resetObj, {x:helpReset.x + (screenData.screenVW * 100) - helpDims.width - 20, y:helpReset.y + titleBGDims.height - (helpDims.height / 2) });
         
-        var playDims = getDims('ft-audio-svg-btn-play');
+        var playDims = obj.getDims('ft-audio-svg-btn-play');
         var playReset = resetObj['ft-audio-svg-btn-play'];
         var playPositions = {x:playReset.x + (screenData.screenVW * 100) - (helpDims.width * 4), y:playReset.y + (screenData.screenVH * 100) - playDims.height - 50 };
         
         setPosition('ft-audio-svg-btn-play', resetObj, playPositions);
         setPosition('ft-audio-svg-btn-time', resetObj, playPositions);
         
-        var resetDims = getDims('ft-audio-svg-btn-reset');
+        var resetDims = obj.getDims('ft-audio-svg-btn-reset');
         var resetReset = resetObj['ft-audio-svg-btn-reset'];
         setPosition('ft-audio-svg-btn-reset', resetObj, playPositions);
         
@@ -94,12 +127,12 @@ module.exports = function (_) {
     };
     
     var setPosition = function(id, resetObj, positions) {
-        var helpDims = getDims(id);
-        var helpReset = resetObj[id];
+        // var helpDims = obj.getDims(id);
+        // var helpReset = resetObj[id];
         TweenLite.set('#'+id, positions);
     };
     
-    var getResetPositions = function() {
+    var getResetPositions = function(itemsArray) {
         // get original height
         // get current height
         // var currentHeight = getDims(id).height;
@@ -116,39 +149,33 @@ module.exports = function (_) {
             currentX,
             currentY;
         
-        for (var i = 0; i < buttons.length; i++) {
-            elementDims = getDims(buttons[i]);
-            elementOrig = originalElementAttributes[buttons[i]];
+        for (var i = 0; i < itemsArray.length; i++) {
+            elementDims = obj.getDims(itemsArray[i]);
+            elementOrig = originalElementAttributes[itemsArray[i]];
             scaleWidthFactor = elementDims.width / elementOrig.width;
             scaleHeightFactor = elementDims.height / elementOrig.height;
             currentX = elementOrig.left * scaleWidthFactor;
             currentY = elementOrig.top * scaleHeightFactor;
-            resetObject[buttons[i]] = {x: -currentX, y: -currentY};
+            resetObject[itemsArray[i]] = {x: -currentX, y: -currentY};
         };
         return resetObject;
         
     };
     
+    obj.getCurrentPosition = function () {
+        var currentPositions = {};
+        var elementList = document.getElementById('ft-audio-svg').querySelectorAll('[id]');
+        return elementList;
+    }
     
-    
-    var getDims = function(id) {
-        return document.getElementById(id).getBoundingClientRect();
-    };
-    
-    obj.getCurrentPosition = function(id) {
-        // return document.getElementById(id).getBBox();
-        return document.getElementById(id)._gsTransform;
-    };
-    
+    // SCALING
     
     /**
-     * Set up resizing of all elements
+     * Set up resizing of all elements.
+     * THIS IS WHERE MEDIA QUERY STYLE CHOOSING WOULD WORK...
      */
     var resizeElements = function () {
         
-        // Calc orientation
-        
-        // Have two different data sets depending on orientation.
         var bgSettings = resizeElement({
             elementID: 'ft-audio-svg-title-background',
             width: (screenData.screenVW * 100),
@@ -159,7 +186,7 @@ module.exports = function (_) {
         
         resizeElement({
             elementID: 'ft-audio-svg-title',
-            scale: (bgSettings.height / 70)
+            scale: (bgSettings.height / 60)
         });
         
         for (var i = 0; i < buttons.length; i++) {
@@ -174,6 +201,18 @@ module.exports = function (_) {
         };
         
     }
+    
+    /*
+    http://codepen.io/blackridge/pen/jEVMjz
+    
+     function normalizeSVGOrigin(element, offset) {
+    var bounds = element.getBBox();
+    if (typeof offset !== "object") {
+        offset = {x:0, y:0};
+    }
+    return (offset.x - bounds.x) + "px " + (offset.y - bounds.y) + "px";
+  return bounds
+}*/
     
     
     /**
@@ -198,7 +237,7 @@ module.exports = function (_) {
      */
     var resizeElement = function(config) {
         
-        // This would have to be calculated depending on orientation?
+        // Set variable defaults
         config.width = config.width || -1;
         config.maxWidth = config.maxWidth || 99999999;
         config.minWidth = config.minWidth || 0;
@@ -209,49 +248,45 @@ module.exports = function (_) {
         config.minScale = config.minScale || config.scale;
         config.maxScale = config.maxScale || config.scale;
         
-        /*console.log('id: '+config.elementID);
-        console.log('width: '+config.width);
-        console.log('height: '+config.height);
-        console.log('scale: '+config.scale);*/
-        
         // Check that width & height is within min and max!
         config.width = _.min( [config.maxWidth, _.max([config.width, config.minWidth]) ]);
         config.height = _.min( [config.maxHeight, _.max([config.height, config.minHeight]) ]);
         config.scale = _.min( [config.maxScale, _.max([config.scale, config.minScale]) ]);
         
+        // Set size of element
         TweenLite.set('#'+config.elementID, {scale: config.scale, attr:{width:config.width, height:config.height}});
         
+        // Return new size in case can be used on other elements.
         return config;
     };
     
+    
+    
     /**
-     * UTILITY FUNCTIONS
+     * 
+     * 
+     * UTILITIES
+     * 
+     * 
      */
     
-    
-    function makeAbsoluteContext(element, svgDocument) {
-      return function(x,y) {
-        var offset = svgDocument.getBoundingClientRect();
-        var matrix = element.getScreenCTM();
-        return {
-          x: (matrix.a * x) + (matrix.c * y) + matrix.e - offset.left,
-          y: (matrix.b * x) + (matrix.d * y) + matrix.f - offset.top
-        };
-      };
-    }
-    
-    
-    // Start positioning elements once page has loaded.
-    obj.init = function (ftSVGPositionData) {
-        
-        var ftSVGPositionData = ftSVGPositionData || {};
-        getScreenSizeAndOrientation();
-        initElements();
-        resizeElements();
-        repositionElements();
-        
-        window.addEventListener("resize", resizeHandler, false);
+    /**
+     * Return the Client Bounding box
+     * @param  {string} id id of element to find
+     * @return {object}    object containing metrics
+     */
+    obj.getDims = function(id) {
+        return document.getElementById(id).getBoundingClientRect();
     };
+    
+    /**
+     * Update the screen data in module scope object on resize.
+     */
+    var getScreenSizeAndOrientation = function() {
+        screenData.screenVW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 100;
+        screenData.screenVH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 100;
+    };
+    
     
     return obj;
 }

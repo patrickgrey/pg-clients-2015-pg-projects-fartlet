@@ -3,7 +3,7 @@ module.exports = function (ftSVGPosition, _) {
     var obj = {};
     var ftSVGPosition = ftSVGPosition;
     var _ = _;
-    var elementsObject = {};
+    // var elementsObject = {};
     var timeButton = document.getElementById('ft-audio-svg-btn-time');
     var playCircle = document.getElementById('ft-audio-svg-btn-play-centre');
     var timeButtonText = document.getElementById('ft-audio-svg-btn-play-text');
@@ -34,6 +34,10 @@ module.exports = function (ftSVGPosition, _) {
     //     obj.t1.play(0);
     // }
     
+    var tmline = new TimelineLite();
+            
+    
+    
     obj.togglePlay = function () {
         // 
         // SETS INFO MOVEMENT
@@ -52,10 +56,7 @@ module.exports = function (ftSVGPosition, _) {
         // Just go with seperate Tweens?
         var timeDims = ftSVGPosition.getDims('ft-audio-svg-btn-sets-info');
         // 
-        var tmline = new TimelineLite();
-            tmline.fromTo([resetButton,setButtonMinus,setButtonPlus,timeButton], 0.1, {autoAlpha: 1}, {autoAlpha: 0});
-            tmline.fromTo(playCircle, 0.1, {fill: '#8BC34A'}, {fill: '#ff0'});
-            tmline.fromTo(timeButtonIconPlay, 0.2, {y: elementsObject['ft-audio-svg-btn-play']._gsTransform.y-100}, {y: elementsObject['ft-audio-svg-btn-play']._gsTransform.y-100 + 20});
+        
             // console.log(ftSVGPosition);
             
             
@@ -71,11 +72,11 @@ module.exports = function (ftSVGPosition, _) {
             // playCircle.style.fill = '#ff0';
             
             
-            TweenLite.killTweensOf("#ft-audio-svg-btn-time-inner");
-            if(obj.currentInfoAnimation) {
-                obj.currentInfoAnimation.progress(1).kill();
-            }
-            obj.currentInfoAnimation = TweenLite.to(setInfo, 0.8, {x:"-=350", y:"-=280", scale:"+=1.3", ease: Elastic.easeOut, delay: tmline.duration()});
+            // TweenLite.killTweensOf("#ft-audio-svg-btn-time-inner");
+            // if(obj.currentInfoAnimation) {
+            //     obj.currentInfoAnimation.progress(1).kill();
+            // }
+            // obj.currentInfoAnimation = TweenLite.to(setInfo, 0.8, {x:"-=350", y:"-=280", scale:"+=1.3", ease: Elastic.easeOut, delay: tmline.duration()});
             
             // TweenLite.to(timeButton, 0.1, {autoAlpha: 0});
             
@@ -103,10 +104,10 @@ module.exports = function (ftSVGPosition, _) {
             // TweenLite.to(timeButton, 0.1, {autoAlpha: 1});
             tmline.reverse(0);
             // console.log(ftSVGPosition);
-            if(obj.currentInfoAnimation) {
-                obj.currentInfoAnimation.progress(1).kill();
-            }
-            obj.currentInfoAnimation = TweenLite.to(setInfo, 0.8, {x:"+=350", y:"+=280", scale:"-=1.3", ease: Elastic.easeOut});
+            // if(obj.currentInfoAnimation) {
+            //     obj.currentInfoAnimation.progress(1).kill();
+            // }
+            // obj.currentInfoAnimation = TweenLite.to(setInfo, 0.8, {x:"+=350", y:"+=280", scale:"-=1.3", ease: Elastic.easeOut});
         }
     }
     
@@ -117,15 +118,50 @@ module.exports = function (ftSVGPosition, _) {
      * @return {[type]}    [description]
      */
     var resizeHandler = function (e) {
+        
+        var buttonResets = ftSVGPosition.getButtonResets();
+        var infoReset = buttonResets['ft-audio-svg-btn-sets-info'];
+        
+        // good at the moment but buttonResets isn't getting new data!
+        // originalElementAttributes needs to be repopulated in other file!
+        // NO! The problem is that the reset creates a global position. It needs to be relative to the screen size and obejcts size?
+        // Can I set it relative to the play button. 
+        // Is the reset telling us the current location? Or does the gTransform object do that?
+        // 
+        // No, still scaling.
+        // Try scaling the el or the ints - nope
+        // log out the number and try to see an interaction. May have to delete orig from it or somethign.
+        
+        var el = document.getElementById('ft-audio-svg-btn-sets-info')._gsTransform;
+        console.log(el);
+        
+        tmline.clear();
+        
+        tmline.fromTo([resetButton,setButtonMinus,setButtonPlus,timeButton], 0.1, {autoAlpha: 1}, {autoAlpha: 0});
+        tmline.fromTo(playCircle, 0.1, {fill: '#8BC34A'}, {fill: '#ff0'});
+        tmline.fromTo(timeButtonIconPlay, 0.2, {y: 0}, {y: 20});
+        tmline.fromTo(setInfo, 0.8, {x: el.x, y: el.y, scale: el.scaleX, ease: Elastic.easeOut}, {x: (el.x-400)*el.scaleX, y: (el.y-300)*el.scaleX, scale: el.scaleX*2} );
+        
+        tmline.pause();
+        
         // Getting there, need to subract orignal value!
-        elementsObject = {};
-        var elementList = document.getElementById('ft-audio-svg').querySelectorAll('[id]');
-        for (var i = 0; i < elementList.length; i++) {
-            // console.log(elementList[i].getAttribute('id'));
-            elementsObject[elementList[i].getAttribute('id')] = elementList[i];
-        };
-        // console.log(elementList[0]._gsTransform.x);
-        console.log(elementsObject['ft-audio-svg-btn-play']._gsTransform.y - 100);
+        // elementsObject = {};
+        // var elementList = document.getElementById('ft-audio-svg').querySelectorAll('[id]');
+        // for (var i = 0; i < elementList.length; i++) {
+        //     // console.log(elementList[i].getAttribute('id'));
+        //     var currentElement = elementList[i];
+        //     TweenLite.set(currentElement, {autoAlpha: 1});
+        //     elementsObject[currentElement.getAttribute('id')] = currentElement;
+        //     console.log(currentElement.getAttribute('id'));
+        //     if (elementsObject[currentElement.getAttribute('id')]._gsTransform) {
+        //         console.log(elementsObject[currentElement.getAttribute('id')]._gsTransform);
+        //     } else {
+        //         console.log('no transform applied');
+        //     }
+        //     console.log('*************************');
+        // };
+        // // console.log(elementList[0]._gsTransform.x);
+        // console.log(elementsObject['ft-audio-svg-btn-play']._gsTransform.y - 100);
         
     };
     

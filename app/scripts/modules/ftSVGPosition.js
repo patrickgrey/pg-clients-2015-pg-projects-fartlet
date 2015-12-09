@@ -9,16 +9,17 @@ module.exports = function (_) {
      */
     
     // Object returned by module
-    var obj = {};
+    var module = {};
+    var elementsOrigin = {};
     // let controller know screen has been resized
     var controllerResizeEvent = new Event('controllerResize');
     // Static variables
-    obj.PORTRAIT = 'PORTRAIT';
-    obj.LANDSCAPE = 'LANDSCAPE';
-    obj.TOP = 'TOP';
-    obj.RIGHT = 'RIGHT';
-    obj.BOTTOM = 'BOTTOM';
-    obj.LEFT = 'LEFT';
+    module.PORTRAIT = 'PORTRAIT';
+    module.LANDSCAPE = 'LANDSCAPE';
+    module.TOP = 'TOP';
+    module.RIGHT = 'RIGHT';
+    module.BOTTOM = 'BOTTOM';
+    module.LEFT = 'LEFT';
     
     
     // list of buttons and an object holding screen data that is used across several functions.
@@ -29,7 +30,7 @@ module.exports = function (_) {
                     // , 'ft-audio-svg-btn-time-radius'
                     ],
         screenData = {
-            orientation: obj.PORTRAIT,
+            orientation: module.PORTRAIT,
             screenVW: 100,
             screenVH: 100
         },
@@ -46,9 +47,17 @@ module.exports = function (_) {
      */
     
     /**
+     * New approach
+     * 
+     * - On first init, get all ID elements in SVG and put into a dictionary object
+     * - then run through and set a neutral tween on each so that they have the _gsTransform attached - this is tested and required
+     * - now we need the reset and the current positions?
+     */
+    
+    /**
      * Start positioning elements once page has loaded.
      */
-    obj.init = function (ftSVGPositionData) {
+    module.init = function (ftSVGPositionData) {
         
         var ftSVGPositionData = ftSVGPositionData || {};
         
@@ -64,13 +73,33 @@ module.exports = function (_) {
      */
     var initElements = function () {
         
+        // elementsOrigin = {};
+        // var elementList = document.getElementById('ft-audio-svg').querySelectorAll('[id]');
+        // for (var i = 0; i < elementList.length; i++) {
+        //     // console.log(elementList[i].getAttribute('id'));
+        //     var currentElement = elementList[i];
+        //     // ensure each element has the _gsTransform object.
+        //     TweenLite.set(currentElement, {x: 1});
+            
+        //     elementsOrigin[currentElement.getAttribute('id')] = currentElement;
+        //     console.log(currentElement.getAttribute('id'));
+        //     console.log(elementsOrigin[currentElement.getAttribute('id')]._gsTransform.y);
+        //     // if (elementsOrigin[currentElement.getAttribute('id')]._gsTransform) {
+        //     // } else {
+        //     //     console.log('no transform applied');
+        //     // }
+        //     console.log('*************************');
+        // };
+        // // console.log(elementList[0]._gsTransform.x);
+        // console.log(elementsOrigin['ft-audio-svg-btn-play']._gsTransform.y - 100);
+        
         TweenLite.set("#ft-audio-svg-title-background", {svgOrigin:"0 0", x:0, y:0});
         TweenLite.set("#ft-audio-svg-title", {svgOrigin:"0 0", x:0, y:3});
         TweenLite.set('#ft-audio-svg-btn-time', {rotation: 100, transformOrigin:"50% 50%" });
         
         for (var i = 0; i < buttons.length; i++) {
             TweenLite.set('#'+buttons[i], {svgOrigin:"0 0"});
-            originalElementAttributes[buttons[i]] = obj.getDims(buttons[i]);
+            originalElementAttributes[buttons[i]] = module.getDims(buttons[i]);
         }
     };
     
@@ -81,6 +110,8 @@ module.exports = function (_) {
      * @param  {integer} 50 milliseconds to delay function
      */
     var resizeHandler = _.debounce(function (e) {
+        
+        
         
         getScreenSizeAndOrientation();
         resizeElements();
@@ -100,46 +131,49 @@ module.exports = function (_) {
      */
     var repositionElements = function () {
         
-        var resetObj = getResetPositions(buttons);
+        var resetObj = module.getButtonResets();
         
-        var titleBGDims = obj.getDims('ft-audio-svg-title-background');
+        var titleBGDims = module.getDims('ft-audio-svg-title-background');
         
-        var helpDims = obj.getDims('ft-audio-svg-btn-help');
+        var helpDims = module.getDims('ft-audio-svg-btn-help');
         var helpReset = resetObj['ft-audio-svg-btn-help'];
-        setPosition('ft-audio-svg-btn-help', resetObj, {x:helpReset.x + (screenData.screenVW * 100) - helpDims.width - 20, y:helpReset.y + titleBGDims.height - (helpDims.height / 2) });
+        setPosition('ft-audio-svg-btn-help', {x:helpReset.x + (screenData.screenVW * 100) - helpDims.width - 20, y:helpReset.y + titleBGDims.height - (helpDims.height / 2) });
         
-        var playDims = obj.getDims('ft-audio-svg-btn-play');
+        var playDims = module.getDims('ft-audio-svg-btn-play');
         var playReset = resetObj['ft-audio-svg-btn-play'];
         var playPositions = {x:playReset.x + (screenData.screenVW * 100) - (helpDims.width * 4), y:playReset.y + (screenData.screenVH * 100) - playDims.height - 50 };
         
-        setPosition('ft-audio-svg-btn-play', resetObj, playPositions);
-        setPosition('ft-audio-svg-btn-time', resetObj, playPositions);
+        setPosition('ft-audio-svg-btn-play', playPositions);
+        setPosition('ft-audio-svg-btn-time', playPositions);
         
-        var resetDims = obj.getDims('ft-audio-svg-btn-reset');
-        var resetReset = resetObj['ft-audio-svg-btn-reset'];
-        setPosition('ft-audio-svg-btn-reset', resetObj, playPositions);
+        // var resetDims = module.getDims('ft-audio-svg-btn-reset');
+        // var resetReset = resetObj['ft-audio-svg-btn-reset'];
+        setPosition('ft-audio-svg-btn-reset', playPositions);
         
-        setPosition('ft-audio-svg-btn-sets-plus', resetObj, playPositions);
-        setPosition('ft-audio-svg-btn-sets-minus', resetObj, playPositions);
-        setPosition('ft-audio-svg-btn-sets-info', resetObj, playPositions);
+        setPosition('ft-audio-svg-btn-sets-plus', playPositions);
+        setPosition('ft-audio-svg-btn-sets-minus', playPositions);
+        setPosition('ft-audio-svg-btn-sets-info', playPositions);
         // setPosition('ft-audio-svg-btn-time-radius', resetObj, playPositions);
         
     };
     
-    var setPosition = function(id, resetObj, positions) {
-        // var helpDims = obj.getDims(id);
-        // var helpReset = resetObj[id];
+    module.getButtonResets = function () {
+        return getResetPositions(buttons);
+    };
+    
+    var setPosition = function(id, positions) {
         TweenLite.set('#'+id, positions);
     };
     
+    
+    // get original height
+    // get current height
+    // var currentHeight = getDims(id).height;
+    // create scale factor from this
+    // Get original y
+    // Multiply by scale factor
+    // subtract scaled y.
     var getResetPositions = function(itemsArray) {
-        // get original height
-        // get current height
-        // var currentHeight = getDims(id).height;
-        // create scale factor from this
-        // Get original y
-        // Multiply by scale factor
-        // subtract scaled y.
         
         var resetObject = {},
             elementDims,
@@ -150,7 +184,8 @@ module.exports = function (_) {
             currentY;
         
         for (var i = 0; i < itemsArray.length; i++) {
-            elementDims = obj.getDims(itemsArray[i]);
+            // console.log(itemsArray[i]);
+            elementDims = module.getDims(itemsArray[i]);
             elementOrig = originalElementAttributes[itemsArray[i]];
             scaleWidthFactor = elementDims.width / elementOrig.width;
             scaleHeightFactor = elementDims.height / elementOrig.height;
@@ -158,11 +193,12 @@ module.exports = function (_) {
             currentY = elementOrig.top * scaleHeightFactor;
             resetObject[itemsArray[i]] = {x: -currentX, y: -currentY};
         };
+        
         return resetObject;
         
     };
     
-    obj.getCurrentPosition = function () {
+    module.getCurrentPosition = function () {
         var currentPositions = {};
         var elementList = document.getElementById('ft-audio-svg').querySelectorAll('[id]');
         return elementList;
@@ -207,7 +243,7 @@ module.exports = function (_) {
     
      function normalizeSVGOrigin(element, offset) {
     var bounds = element.getBBox();
-    if (typeof offset !== "object") {
+    if (typeof offset !== "objectect") {
         offset = {x:0, y:0};
     }
     return (offset.x - bounds.x) + "px " + (offset.y - bounds.y) + "px";
@@ -275,7 +311,7 @@ module.exports = function (_) {
      * @param  {string} id id of element to find
      * @return {object}    object containing metrics
      */
-    obj.getDims = function(id) {
+    module.getDims = function(id) {
         return document.getElementById(id).getBoundingClientRect();
     };
     
@@ -288,5 +324,5 @@ module.exports = function (_) {
     };
     
     
-    return obj;
+    return module;
 }

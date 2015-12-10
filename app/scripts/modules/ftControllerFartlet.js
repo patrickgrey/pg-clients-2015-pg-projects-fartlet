@@ -121,7 +121,7 @@ module.exports = function (ftSVGPosition, _) {
         
         var buttonResets = ftSVGPosition.getButtonResets();
         var infoReset = buttonResets['ft-audio-svg-btn-sets-info'];
-        
+            
         // good at the moment but buttonResets isn't getting new data!
         // originalElementAttributes needs to be repopulated in other file!
         // NO! The problem is that the reset creates a global position. It needs to be relative to the screen size and obejcts size?
@@ -133,14 +133,23 @@ module.exports = function (ftSVGPosition, _) {
         // log out the number and try to see an interaction. May have to delete orig from it or somethign.
         
         var el = document.getElementById('ft-audio-svg-btn-sets-info')._gsTransform;
-        console.log(el);
+        var screenSize = ftSVGPosition.getScreenSize();
+        
+        // console.log(screenSize);
+        var playPosition = ftSVGPosition.getPlayPositions();
+        console.log(playPosition);
         
         tmline.clear();
-        
+        // Need to use VW and VH!!!!!
+        // Position relative to Play button?
+        // 
+        // AHHHH, each element has it's own coordinates system!!??? All are positioned using transforms on their original position.
+        // sets-info has the same x, y as the play button proves this!!
+        // Scaling ruins all positioning! Why?
         tmline.fromTo([resetButton,setButtonMinus,setButtonPlus,timeButton], 0.1, {autoAlpha: 1}, {autoAlpha: 0});
         tmline.fromTo(playCircle, 0.1, {fill: '#8BC34A'}, {fill: '#ff0'});
         tmline.fromTo(timeButtonIconPlay, 0.2, {y: 0}, {y: 20});
-        tmline.fromTo(setInfo, 0.8, {x: el.x, y: el.y, scale: el.scaleX, ease: Elastic.easeOut}, {x: (el.x-400)*el.scaleX, y: (el.y-300)*el.scaleX, scale: el.scaleX*2} );
+        tmline.fromTo(setInfo, 0.8, {x: el.x, y: el.y, scale: el.scaleX, ease: Elastic.easeOut}, {x: playPosition.x-60, y: playPosition.y-40, scale: el.scaleX, ease: Elastic.easeOut} );
         
         tmline.pause();
         

@@ -11,6 +11,7 @@ module.exports = function (_) {
     // Object returned by module
     var module = {};
     var elementsOrigin = {};
+    var playPositions;
     // let controller know screen has been resized
     var controllerResizeEvent = new Event('controllerResize');
     // Static variables
@@ -106,14 +107,14 @@ module.exports = function (_) {
     
     /**
      * Handle screen resizes with a debounce delay
-     * @param  {event} e) {                   getScreenSizeAndOrientation();        resizeElements();        repositionElements();    } 
+     * @param  {event} e) {                   module.getScreenSize();        resizeElements();        repositionElements();    } 
      * @param  {integer} 50 milliseconds to delay function
      */
     var resizeHandler = _.debounce(function (e) {
         
         
         
-        getScreenSizeAndOrientation();
+        module.getScreenSize();
         resizeElements();
         repositionElements();
         
@@ -141,7 +142,7 @@ module.exports = function (_) {
         
         var playDims = module.getDims('ft-audio-svg-btn-play');
         var playReset = resetObj['ft-audio-svg-btn-play'];
-        var playPositions = {x:playReset.x + (screenData.screenVW * 100) - (helpDims.width * 4), y:playReset.y + (screenData.screenVH * 100) - playDims.height - 50 };
+        playPositions = {x:playReset.x + (screenData.screenVW * 100) - (helpDims.width * 4), y:playReset.y + (screenData.screenVH * 100) - playDims.height - 50 };
         
         setPosition('ft-audio-svg-btn-play', playPositions);
         setPosition('ft-audio-svg-btn-time', playPositions);
@@ -318,10 +319,15 @@ module.exports = function (_) {
     /**
      * Update the screen data in module scope object on resize.
      */
-    var getScreenSizeAndOrientation = function() {
+    module.getScreenSize = function() {
         screenData.screenVW = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) / 100;
         screenData.screenVH = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) / 100;
+        return screenData;
     };
+    
+    module.getPlayPositions = function() {
+        return playPositions.css;
+    }; 
     
     
     return module;
